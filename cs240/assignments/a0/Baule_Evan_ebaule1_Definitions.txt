@@ -1,0 +1,21 @@
+Evan M. Baule
+ebaule1@binghamton.edu
+
+Linux Shell Command Definitions
+
+pwd : 
+	pwd is a command find the directory that you are working  within. PWD is basically a "You are here" command, and with choosing either -L or -P you can choose whether or not to include symbolic links.
+
+mv: 
+	the 'mv fileName' command moved files from one location/directory to another. mv accepts multiple options: backup (-b/--backup), force or interactive, or -n to avoid overwrites. 
+
+mkdir:
+	'mkdir folderName' is the command used to create a directory. It allows an option in order to set modes, declare parents, print messages, and set security.
+
+rmdir:
+	'rmdir folderName'' is the opposite of mkdir, as in it removes a directory. This command also includes options for removing parents and displaying diagnostic messages when attempting to delete a directory. 
+	rm:
+		I chose to nest this command within rmdir because its functionality is somewhat necessary for understanding rmdir. rm is used to remove a specific file. With rm you have options such as -f to run over any complications with the removal of the files. In regard to rmdir, rm -rf (forced recursive removal), you can achieve a similar result, as the recursive removal will remove all files in all subdirectories.
+
+cd:
+	The 'cd folderName' command is used for navigation through the directory hierarchy. You can use 'cd' to return to the root directory. Conversely, you can use cd to navigate into multiple subdirectories by using a command similar to cd/folder/sub/sub. cd .. will allow you to travel "up" a directory to the parent of the current directory, and cd ../folder will allow you to navigate to another directory with little relation to the current one.
