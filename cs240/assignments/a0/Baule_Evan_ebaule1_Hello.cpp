@@ -8,7 +8,7 @@ class Hello_Class {
    public:
       Hello_Class(int i) {
          if (i == 0) {
-            output_string = "Hello C++ Data Structures!";
+            output_string = "Hello C++ Data Structures, from Evan!! xD";
          } else {
             output_string = "Hello Data Structures!";
          }

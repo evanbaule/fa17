@@ -7,7 +7,7 @@ pwd :
 	pwd is a command find the directory that you are working  within. PWD is basically a "You are here" command, and with choosing either -L or -P you can choose whether or not to include symbolic links.
 
 mv: 
-	the 'mv fileName' command moved files from one location/directory to another. mv accepts multiple options: backup (-b/--backup), force or interactive, or -n to avoid overwrites. 
+	the 'mv fileName' command moved files from one location/directory to another. mv accepts multiple options: backup (-b/--backup), force or interactive, or -n to avoid overwrites. mv can also be used to rename a file by declaring the target name after the file name argument.
 
 mkdir:
 	'mkdir folderName' is the command used to create a directory. It allows an option in order to set modes, declare parents, print messages, and set security.
