@@ -1,18 +1,21 @@
-#
 # Specifiy the target
-all:	Baule_Evan_ebaule1_Hello
+all:	Hello
 
 # Specify the object files that the target depends on
 # Also specify the object files needed to create the executable
 Hello:	Baule_Evan_ebaule1_Hello.o
-	g++  Baule_Evan_ebaule1_Hello.o  -o Baule_Evan_ebaule1_Hello.exe
+	g++  Baule_Evan_ebaule1_Hello.o Hello_Class.o -o Baule_Evan_ebaule1_Hello.exe
+	#Copy into a shorter name exe file for export
+	\cp Baule_Evan_ebaule1_Hello.exe run.exe
 
 # Specify how the object files should be created from source files
-Hello.o:	Baule_Evan_ebaule1_Hello.cpp
+Baule_Evan_ebaule1_Hello.o:	Baule_Evan_ebaule1_Hello.cpp
+	g++ -c Hello_Class.cpp
 	g++ -c Baule_Evan_ebaule1_Hello.cpp
+	
 
 # Specify the object files and executables that are generated
 # and need to be removed to re-compile the whole thing
 clean:
-	rm -f *.o Baule_Evan_ebaule1_Hello.exe
+	rm -f *.o Baule_Evan_ebaule1_Hello.exe run.exe
 
