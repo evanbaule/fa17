@@ -1,0 +1,19 @@
+# Specifiy the target
+all:	Donate
+
+# Specify the object files that the target depends on
+# Also specify the object files needed to create the executable
+Donate:	Donate.o
+	g++  Donate.o DonorClass.o -o Donate.exe
+	
+
+# Specify how the object files should be created from source files
+Donate.o:	Donate.cpp
+	g++ -c DonorClass.cpp
+	g++ -c Donate.cpp
+	
+
+# Specify the object files and executables that are generated
+# and need to be removed to re-compile the whole thing
+clean:
+	rm -f *.o Donate.exe 
