@@ -9,9 +9,9 @@
 
 using namespace std;
 
-class DonorClass {
+class Donor {
 public:
-	DonorClass(float initAmt);
+	Donor(float initAmt);
 	void overwriteDonor();
 	void donate(float donAmt);
 	void printFormattedDonorDetails();

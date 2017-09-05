@@ -1,11 +1,11 @@
 /*--References--*/
-#include "DonorClass.h"
+#include "Donor.h"
 #include "iostream"
 #include "string"
 #include "stdlib.h"
 using namespace std;
 
-DonorClass::DonorClass(float initAmt){
+Donor::Donor(float initAmt){
 	this->donorLastName = "Baule";
 	this->donorFirstName = "Evan";
 	this->donorAge = 20;
@@ -18,7 +18,7 @@ DonorClass::DonorClass(float initAmt){
 
 }
 
-void DonorClass::overwriteDonor(){
+void Donor::overwriteDonor(){
 	cout << "lastName" << endl;
 	cin >> donorLastName;
 
@@ -29,15 +29,15 @@ void DonorClass::overwriteDonor(){
 	cin >> donorAge;
 }
 
-void DonorClass::donate(float donAmt){
+void Donor::donate(float donAmt){
 	this->donationAmount += donAmt;
 }
 
 
-void DonorClass::printFormattedDonorDetails(){
+void Donor::printFormattedDonorDetails(){
 	cout << "deets" << endl;
 }
 
-void DonorClass::printFormattedTotal(){
+void Donor::printFormattedTotal(){
 	cout << "$" << this->donationAmount << endl;
 }

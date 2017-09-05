@@ -1,7 +1,7 @@
 /*--References--*/
 #include "iostream"
 #include "stdlib.h"
-#include "DonorClass.h"
+#include "Donor.h"
 using namespace std;
 
 int main(int argc, char *argv[])
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 	cout << "Enter an init amount  : " << endl;
 	cin >> initAmt;
 
-	DonorClass *donorPtr = new DonorClass(initAmt);
+	Donor *donorPtr = new Donor(initAmt);
 	cout << "Welcome, please enter a command to manipulate a donor, your commands are: 'Add', 'Manage', 'View', 'Donate', 'Total', and 'Quit'. The Program will not exit until you choose 'Quit'." << endl;
 	string commandStr = "";
 	while(true){

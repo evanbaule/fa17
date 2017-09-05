@@ -4,12 +4,12 @@ all:	Donate
 # Specify the object files that the target depends on
 # Also specify the object files needed to create the executable
 Donate:	Donate.o
-	g++  Donate.o DonorClass.o -o Donate.exe
+	g++  Donate.o Donor.o -o Donate.exe
 	
 
 # Specify how the object files should be created from source files
 Donate.o:	Donate.cpp
-	g++ -c DonorClass.cpp
+	g++ -c Donor.cpp
 	g++ -c Donate.cpp
 	
 
