@@ -6,30 +6,22 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-	//inst new donor obj
-	//take input cin >> strIn
-	//while(strIn != "Quit")
-	//switch on str to call changes/funcs of donor obj
-	//close -> since strIn was 'Quit'
-
-	int initAmt;
-	cout << "Enter an init amount  : " << endl;
-	cin >> initAmt;
-
-	Donor *donorPtr = new Donor(initAmt);
-	cout << "Welcome, please enter a command to manipulate a donor, your commands are: 'Add', 'Manage', 'View', 'Donate', 'Total', and 'Quit'. The Program will not exit until you choose 'Quit'." << endl;
+	/* -- Evan M. Baule -- */
+	/* -- Coding Assignment 1 */
+	Donor *donorPtr = new Donor();
 	string commandStr = "";
 	while(true){
-		cout << "Please enter a command: " << endl;
+		
+		cout << "Choose from [\"Add\" \"Manage\" \"View\" \"Donate\" \"Total\" \"Quit\"]: ";
 		cin >> commandStr;
 			if(commandStr == "Add"){ 
-
+				donorPtr->addDonor();
 			}
 			else if(commandStr == "Manage"){
-
+				donorPtr->overwriteDonor();
 			}
 			else if(commandStr == "View"){
-				donorPtr->printFormattedTotal();
+				donorPtr->printFormattedDonorDetails();
 			}
 			else if(commandStr == "Donate"){
 				cout << "How much would you like to donate?" << endl;
@@ -38,7 +30,7 @@ int main(int argc, char *argv[])
 				donorPtr->donate(donAmt);
 			}
 			else if(commandStr == "Total"){
-
+				donorPtr->printFormattedTotal();
 			}
 			else if(commandStr == "Quit"){
 				delete(donorPtr);

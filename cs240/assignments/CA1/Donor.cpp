@@ -5,28 +5,67 @@
 #include "stdlib.h"
 using namespace std;
 
-Donor::Donor(float initAmt){
-	this->donorLastName = "Baule";
-	this->donorFirstName = "Evan";
-	this->donorAge = 20;
-	this->addrStreetNum = 124;
-	this->addrStreetName = "Canterbury Drive";
-	this->addrTown = "Camillus";
-	this->addrZipCode = "13031";
-	this->donationAmount = initAmt;
+Donor::Donor(){
+	this->donorLastName = "";
+	this->donorFirstName = "";
+	this->donorAge = -1;
+	this->addrStreetNum = 0 ;
+	this->addrStreetName = "";
+	this->addrTown = ", NY";
+	this->addrZipCode = "xxxxx";
+	this->donationAmount = 0.00;
 
 
 }
 
-void Donor::overwriteDonor(){
-	cout << "lastName" << endl;
+void Donor::addDonor() {
+
+	cout << "Last Name: ";
 	cin >> donorLastName;
 
-	cout << "firstName" << endl;
+	cout << "First Name: ";
 	cin >> donorFirstName;
 
-	cout << "age" << endl;
+	cout << "Age: ";
 	cin >> donorAge;
+
+	cout << "Street Name: ";
+	cin >> addrStreetName;
+
+	cout << "House Number: ";
+	cin >> addrStreetNum;
+
+	cout << "Town: ";
+	cin >> addrTown;
+
+	cout << "Zip Code:  ";
+	cin >> addrZipCode;
+
+}
+
+void Donor::overwriteDonor(){
+
+	cout << "Last Name: ";
+	cin >> donorLastName;
+
+	cout << "First Name: ";
+	cin >> donorFirstName;
+
+	cout << "Age: ";
+	cin >> donorAge;
+
+	cout << "Street Name: ";
+	cin >> addrStreetName;
+
+	cout << "House Number: ";
+	cin >> addrStreetNum;
+
+	cout << "Town: ";
+	cin >> addrTown;
+
+	cout << "Zip Code:  ";
+	cin >> addrZipCode;
+
 }
 
 void Donor::donate(float donAmt){
@@ -35,7 +74,12 @@ void Donor::donate(float donAmt){
 
 
 void Donor::printFormattedDonorDetails(){
-	cout << "deets" << endl;
+	cout << "Donor Info: " <<  endl;
+	cout << donorLastName << " " << donorFirstName << ": age " << donorAge << endl;
+	cout << addrStreetNum << " " << addrStreetName << endl;
+	cout << addrTown << " " << addrZipCode << endl;
+	cout << "Current Amount Donated: ";
+	printFormattedTotal();
 }
 
 void Donor::printFormattedTotal(){

@@ -11,7 +11,8 @@ using namespace std;
 
 class Donor {
 public:
-	Donor(float initAmt);
+	Donor();
+	void addDonor(); 
 	void overwriteDonor();
 	void donate(float donAmt);
 	void printFormattedDonorDetails();
