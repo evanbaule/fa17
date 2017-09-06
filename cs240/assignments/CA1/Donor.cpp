@@ -3,6 +3,7 @@
 #include "iostream"
 #include "string"
 #include "stdlib.h"
+#include "stdio.h"
 using namespace std;
 
 Donor::Donor(){
@@ -72,6 +73,9 @@ void Donor::donate(float donAmt){
 	this->donationAmount += donAmt;
 }
 
+void Donor:: printFormattedDollars(){
+	printf("$%.2f \n", donationAmount);
+}
 
 void Donor::printFormattedDonorDetails(){
 	cout << "Donor Info: " <<  endl;
@@ -79,9 +83,10 @@ void Donor::printFormattedDonorDetails(){
 	cout << addrStreetNum << " " << addrStreetName << endl;
 	cout << addrTown << " " << addrZipCode << endl;
 	cout << "Current Amount Donated: ";
-	printFormattedTotal();
+	printFormattedDollars();
 }
 
 void Donor::printFormattedTotal(){
-	cout << "$" << this->donationAmount << endl;
+	cout << "Total: ";
+	printFormattedDollars();
 }

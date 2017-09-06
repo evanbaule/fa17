@@ -1,0 +1,10 @@
+Status : CA1 - September 6th 00:19
+	Need to add:
+		Safeguard against infinite loop
+		Safeguard against performing commands on a donor object that doesnt exit
+		Safeguard against improper format of inputs
+		Need to fix why cin doesn't want to take floats with decimals
+			.xx drops into loop
+			x.xx cannot be interpreted and throws not recognized command
+		Change to input from text file
+			open stream from file -> input line by line from *FILE

@@ -17,6 +17,7 @@ public:
 	void donate(float donAmt);
 	void printFormattedDonorDetails();
 	void printFormattedTotal();
+	void printFormattedDollars();
 
 private:
 	string donorLastName;
