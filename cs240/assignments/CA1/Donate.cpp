@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 			}
 			else if(commandStr == "Donate"){
 				cout << "How much would you like to donate?" << endl;
-				int donAmt;
+				float donAmt;
 				cin >> donAmt;
 				donorPtr->donate(donAmt);
 			}

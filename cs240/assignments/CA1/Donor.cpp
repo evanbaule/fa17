@@ -30,11 +30,13 @@ void Donor::addDonor() {
 	cout << "Age: ";
 	cin >> donorAge;
 
+
 	cout << "Street Name: ";
 	cin >> addrStreetName;
 
 	cout << "House Number: ";
 	cin >> addrStreetNum;
+
 
 	cout << "Town: ";
 	cin >> addrTown;
