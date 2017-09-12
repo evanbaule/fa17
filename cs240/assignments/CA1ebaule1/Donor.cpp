@@ -12,7 +12,7 @@ Donor::Donor(){
 	this->donorAge = -1;
 	this->addrStreetNum = 0 ;
 	this->addrStreetName = "";
-	this->addrTown = ", NY";
+	this->addrTown = "";
 	this->addrZipCode = "xxxxx";
 	this->donationAmount = 0.00;
 
@@ -30,13 +30,11 @@ void Donor::addDonor() {
 	cout << "Age: ";
 	cin >> donorAge;
 
-
-	cout << "Street Name: ";
-	cin >> addrStreetName;
-
 	cout << "House Number: ";
 	cin >> addrStreetNum;
 
+	cout << "Street Name: ";
+	cin >> addrStreetName;
 
 	cout << "Town: ";
 	cin >> addrTown;
@@ -57,11 +55,11 @@ void Donor::overwriteDonor(){
 	cout << "Age: ";
 	cin >> donorAge;
 
-	cout << "Street Name: ";
-	cin >> addrStreetName;
-
 	cout << "House Number: ";
 	cin >> addrStreetNum;
+
+	cout << "Street Name: ";
+	cin >> addrStreetName;
 
 	cout << "Town: ";
 	cin >> addrTown;
@@ -73,6 +71,7 @@ void Donor::overwriteDonor(){
 
 void Donor::donate(float donAmt){
 	this->donationAmount += donAmt;
+	printf("$%.2f Donated\n", donAmt);
 }
 
 void Donor:: printFormattedDollars(){
@@ -83,12 +82,11 @@ void Donor::printFormattedDonorDetails(){
 	cout << "Donor Info: " <<  endl;
 	cout << donorLastName << " " << donorFirstName << ": age " << donorAge << endl;
 	cout << addrStreetNum << " " << addrStreetName << endl;
-	cout << addrTown << " " << addrZipCode << endl;
+	cout << addrTown << ", NY " << addrZipCode << endl;
 	cout << "Current Amount Donated: ";
 	printFormattedDollars();
 }
 
 void Donor::printFormattedTotal(){
-	cout << "Total: ";
 	printFormattedDollars();
 }

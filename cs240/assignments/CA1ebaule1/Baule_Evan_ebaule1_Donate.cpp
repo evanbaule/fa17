@@ -10,9 +10,10 @@ int main(int argc, char *argv[])
 	/* -- Coding Assignment 1 */
 	Donor *donorPtr = new Donor();
 	string commandStr = "";
-	while(true){
+	while(commandStr != "Quit"){
 		
-		cout << "Choose from [\"Add\" \"Manage\" \"View\" \"Donate\" \"Total\" \"Quit\"]: ";
+		cout << "Enter a command." << endl;
+		cout << "Choose from [\"Add\" \"Manage\" \"View\" \"Donate\" \"Total\" \"Quit\"] " << endl << ": ";
 		cin >> commandStr;
 			if(commandStr == "Add"){ 
 				donorPtr->addDonor();
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 				donorPtr->printFormattedDonorDetails();
 			}
 			else if(commandStr == "Donate"){
-				cout << "How much would you like to donate?" << endl;
+				cout << "Enter Amount to Donate: ";
 				float donAmt;
 				cin >> donAmt;
 				donorPtr->donate(donAmt);
@@ -37,8 +38,9 @@ int main(int argc, char *argv[])
 				exit(0);
 			}
 			else {
-				cout << "Command Not Recognized" << endl;
+				cout << "Command not recognized. Please try again." << endl;
 			}
+		cout << endl;
 	}	
 }
 
