@@ -1,41 +1,39 @@
-/*--Guard--*/
+/* -- Guard -- */
 #ifndef DONOR_H
 #define DONOR_H
 
-/*--References--*/
+/* -- References -- */
 #include "string"
 #include "stdlib.h"
 #include "iostream"
 
 using namespace std;
 
-class Donor {
+class Donor
+{
 public:
 	Donor();
-	void addDonor(); 
-	void overwriteDonor();
-	void donate(float donAmt);
-	void printFormattedDonorDetails();
-	void printFormattedTotal();
-	void printFormattedDollars();
+	void manageDonor(string property);
+	void changePassword();
+	void viewDonorDetails();
+	void donate(float donationAmt);
+	void printTotal();
+	void logout();
+	~Donor();
 
 private:
-	string donorLastName;
-	string donorFirstName;
-	int donorAge;
-	int addrStreetNum;
-	string addrStreetName;
-	string addrTown;
-	string addrZipCode;
-	float donationAmount;
+	string lastName;
+	string firstName;
+	string userID;
+	string password;
+	int age;
+	int streetNumber;
+	string streetName;
+	string town;
+	string state;
+	string zip;
+	float totalDonated;
 };
 
+/* -- End Guard -- */
 #endif
-
-
-
-
-
-
-
-
