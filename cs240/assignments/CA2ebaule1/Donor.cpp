@@ -4,6 +4,7 @@
 #include "string"
 #include "stdlib.h"
 #include "stdio.h"
+#include "ctype.h"
 using namespace std;
 
 // Construction
@@ -73,7 +74,7 @@ void Donor::manageDonor(string property){
 			string buffer;
 			cout << "Enter a new Street Name: " << endl;
 			cin >> buffer;
-			if(validateStreetName(buffer)){
+			if(validateStreetNameTown(buffer)){
 				this->streetName = buffer; //maybe deref? possible issue
 				cout << "Street Name changed to: " << this->streetName << endl;
 			} else {
@@ -86,7 +87,7 @@ void Donor::manageDonor(string property){
 			string buffer;
 			cout << "Enter a new Town: " << endl;
 			cin >> buffer;
-			if(validateTown(buffer)){
+			if(validateStreetNameTown(buffer)){
 				this->town = buffer; //maybe deref? possible issue
 				cout << "Town changed to: " << this->town << endl;
 			} else {
@@ -157,14 +158,6 @@ void Donor::changePassword(){
 	}
 };
 
-bool validatePassword(string newPass){
-	int minSize = 6;
-	if(newPass.size() >= minSize){ //this only returns bytes
-		return true;
-	}
-	return false;
-}
-
 // Input Command : 'View'
 // Displays member properties of this donor
 // Format : 
@@ -198,4 +191,86 @@ void Donor::printTotal(){};
 void floatToDollarFormat(float tbf) {
 	printf("$%.2f \n", tbf);
 }
+
+/*--Validation--*/
+
+//true if string buf contains only letters aA-zZ
+bool validateName(const string &input){
+	for (int i = 0; i < input.size(); i++)
+	{
+		if(!isalpha(input[i])){
+			return false;
+		}
+	}
+	return true;
+}
+
+//true if 4 < len < 11 and only letters and digits
+bool validateUserID(const string &input){
+
+}
+
+//true if password is 6 or more characters and contains 1 digit and 1 symbol
+bool validatePassword(const string &newPass){
+	int minSize = 6;
+	if(newPass.size() >= minSize){ //this only returns bytes
+		return true;
+	}
+	return false;
+}
+
+//true if x > 17
+bool validateAge(const int &input){
+	if(input > 17){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+//true if positive - I aknowledge that this isn't necessary and neither is the above validation but I felt it necessary to stay somewhat consistent and validate everything separately
+bool validateStreetNumber(const int &input){
+	if(input > 0){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+//true if only letters and spaces
+bool validateStreetNameTown(const string &input){
+	for (int i = 0; i < input.size(); i++)
+	{
+		if(!isalpha(input[i]) || !isspace(input[i])){
+			return false;
+		}
+	}
+	return true;
+}
+
+//return true if exactly 5 digits
+bool validateZip(const string &input){
+	if(input.size() != 5){
+		return false;
+	}
+	for (int i = 0; i < input.size(); i++)
+	{
+		if(!isdigit(input[i])){
+			return false;
+		}
+	}
+	return true;
+}
+
+//return true if positive
+bool validateTotalDonated(const float &input){
+	if(input > 0){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/*--End Validation--*/
+
 
