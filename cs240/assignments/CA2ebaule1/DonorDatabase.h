@@ -7,16 +7,17 @@
 #include "stdlib.h"
 #include "iostream"
 
-using namespace std;
 
 class DonorDatabase
 {
 public:
 	DonorDatabase();
-	void readExisting(FILE * fname);
-	void readNew(FILE * fname);
-	void writeNew(FILE * fname);
-	bool searchFor(string userid);
+	DonorDatabase(int maxLen);
+	void searchUserID(string userID);
+	void addDonor(const Donor &donorBuffer);
+	void writeDBFile();
+	void readDBFile();
+	void printReport();
 	~DonorDatabase();
 
 private:

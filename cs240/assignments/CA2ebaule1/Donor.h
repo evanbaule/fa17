@@ -7,7 +7,6 @@
 #include "stdlib.h"
 #include "iostream"
 
-using namespace std;
 
 class Donor
 {
@@ -16,22 +15,23 @@ public:
 	void manageDonor(string property);
 	void changePassword();
 	void viewDonorDetails();
-	void donate(float donationAmt);
+	void donate();
 	void printTotal();
-	void logout();
 	~Donor();
 
 private:
-	string lastName;
-	string firstName;
-	string userID;
-	string password;
+	std::string lastName;
+	std::string firstName;
+	std::string userID;
+	std::string password;
 	int age;
 	int streetNumber;
-	string streetName;
-	string town;
-	string state;
-	string zip;
+	std::string streetName;
+	std::string town;
+	enum state{
+		NY, PA, RI, NH, VT, MA, CT, ME
+	}
+	std::string zip;
 	float totalDonated;
 };
 
