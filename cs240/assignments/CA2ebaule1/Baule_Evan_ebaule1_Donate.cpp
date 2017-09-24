@@ -51,8 +51,7 @@ int main(int argc, char *argv[])
 
 						if(internalInputCommand == "Manage")
 						{
-							cout << "I fucked this up bad";
-							activeUser.manageUser();	
+							activeUser.manageDonor();	
 						}
 						else if(internalInputCommand == "Passwd"){
 							activeUser.changePassword();

@@ -7,31 +7,45 @@
 #include "stdlib.h"
 #include "iostream"
 
+using namespace std;
+
 
 class Donor
 {
 public:
 	Donor();
-	void manageDonor(string property);
+	void manageDonor();
 	void changePassword();
 	void viewDonorDetails();
 	void donate();
 	void printTotal();
+
+	void floatToDollarFormat(const float &input);
+	/*--Validation--*/
+	bool validateName(const string &input);
+	bool validateUserID(const string &input);
+	bool validatePassword(const string &newPass);
+	bool validateAge(const int &input);	
+	bool validateStreetNumber(const int &input);	
+	bool validateStreetNameTown(const string &input);
+	bool validateZip(const string &input);
+	bool validateTotalDonated(const float &input);
+
 	~Donor();
 
 private:
-	std::string lastName;
-	std::string firstName;
-	std::string userID;
-	std::string password;
+	string lastName;
+	string firstName;
+	string userID;
+	string password;
 	int age;
 	int streetNumber;
-	std::string streetName;
-	std::string town;
+	string streetName;
+	string town;
 	enum state{
 		NY, PA, RI, NH, VT, MA, CT, ME
-	}
-	std::string zip;
+	};
+	string zip;
 	float totalDonated;
 };
 
