@@ -23,7 +23,7 @@ public:
 
 private:
 	int max;
-	Donor * db;
+	Donor* db;
 };
 
 

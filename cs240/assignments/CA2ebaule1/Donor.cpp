@@ -22,6 +22,13 @@ Donor::Donor() {
 	zip = "default";
 	totalDonated = -1;
 
+}
+
+Donor::~Donor(){
+
+}
+
+void Donor::addPropertiesSequential(){
 	int ibuff;
 	float fbuff;
 	string buffer;
@@ -113,10 +120,6 @@ Donor::Donor() {
 			cout << "Input validation failed." << endl;
 		}
 	}
-}
-
-Donor::~Donor(){
-
 }
 
 //Accessors

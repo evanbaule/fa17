@@ -14,6 +14,7 @@ class Donor
 {
 public:
 	Donor();
+	void addPropertiesSequential();
 	void manageDonor();
 	void changePassword();
 	void viewDonorDetails();

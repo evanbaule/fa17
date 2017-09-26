@@ -24,6 +24,8 @@ int main(int argc, char *argv[])
 	//int maxLen = atoi(argv[0]);
 	DonorDatabase * donors = new DonorDatabase(maxLen);
 
+
+	/*
 	cout << "Testing purposes" << endl;
 	Donor * testDonor = new Donor();
 
@@ -33,6 +35,7 @@ int main(int argc, char *argv[])
 	cout <<"Donating"<<endl;
 	testDonor->donate();
 
+	*/
 
 
 	/* Prompt */
@@ -79,8 +82,7 @@ int main(int argc, char *argv[])
 				}	*/
 			}
 		}else if(inputCommand == "Add") {
-			//prompt construction of new user
-			//donors->addDonor();
+			donors->addDonor();
 		}else if(inputCommand == "Save") {
 			donors->writeDBFile();
 		}else if(inputCommand == "Load") {

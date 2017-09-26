@@ -13,7 +13,11 @@ using namespace std;
 
 DonorDatabase::DonorDatabase(int maxLen){
 	max = maxLen;
+	Donor * evan = new Donor();
+	Donor * cris = new Donor();
 	db = new Donor[max];
+	db[0] = *evan;
+	db[1] = *cris;
 }
 
 
@@ -26,7 +30,8 @@ Donor * DonorDatabase::returnUserByID(string userIDSearch){
 }
 
 void DonorDatabase::addDonor(){
-	
+	Donor * buff = new Donor();
+	buff->addPropertiesSequential();
 }
 
 
@@ -73,5 +78,6 @@ void DonorDatabase::readDBFile(){
 // Total Amount Donated: float total
 //
 void DonorDatabase::printReport(){
-	cout << "Printing a report..." << endl;
+	int counter = 0;
+	
 }
