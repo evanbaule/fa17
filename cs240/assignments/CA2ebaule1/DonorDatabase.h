@@ -15,7 +15,7 @@ public:
 	DonorDatabase(int maxLen);
 	bool searchUserID(string userID);
 	Donor * returnUserByID(string userIDSearch);
-	void addDonor(const Donor &donorBuffer);
+	void addDonor();
 	void writeDBFile();
 	void readDBFile();
 	void printReport();

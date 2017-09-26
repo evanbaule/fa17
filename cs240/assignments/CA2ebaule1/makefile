@@ -3,13 +3,14 @@ all:	Donate
 
 # Specify the object files that the target depends on
 # Also specify the object files needed to create the executable
-Donate:	Donate.o
-	g++  Baule_Evan_ebaule1_Donate.o Donor.o -o Baule_Evan_ebaule1_Donate.exe
+Donate:	Baule_Evan_ebaule1_Donate.o Donor.o DonorDatabase.o
+	g++  Baule_Evan_ebaule1_Donate.o Donor.o DonorDatabase.o -o Baule_Evan_ebaule1_Donate.exe
 	
 
 # Specify how the object files should be created from source files
-Donate.o: Baule_Evan_ebaule1_Donate.cpp
+Donate.o: Baule_Evan_ebaule1_Donate.cpp Donor.cpp DonorDatabase.cpp
 	g++ -c Donor.cpp
+	g++ -c DonorDatabase.cpp
 	g++ -c Baule_Evan_ebaule1_Donate.cpp
 	
 

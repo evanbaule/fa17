@@ -9,7 +9,6 @@
 
 using namespace std;
 
-
 // Construction
 
 DonorDatabase::DonorDatabase(int maxLen){
@@ -17,37 +16,19 @@ DonorDatabase::DonorDatabase(int maxLen){
 	db = new Donor[max];
 }
 
-/*
+
 bool DonorDatabase::searchUserID(string userIDSearch){
-	int i;
-	for (i = 0; i < max; i++)
-	{
-		if(this->db[i].getUserID() == userIDSearch){
-			return true;
-		}
-	}
-	cout << "A user with that UserID does not exist." << endl;
-	return false;
+	return true;
 }
 
 Donor * DonorDatabase::returnUserByID(string userIDSearch){
-	int i;
-	for(i = 0; i < max; i++){
-		if(this->db[i].getUserID() == userIDSearch) {
-			return *this->db[i];
-		}
-	}
+	return new Donor();
 }
 
-void DonorDatabase::addDonor(const Donor &donorBuffer){
-	if(this->db.size() < max){
-		Donor * dbuffer = new Donor();
-		this->db[this->db.size()] = *dbuffer;
-
-		//check for overlapping IDs
-	}
+void DonorDatabase::addDonor(){
+	
 }
-*/
+
 
 //Format : 
 // Total length : int len
@@ -57,11 +38,11 @@ void DonorDatabase::addDonor(const Donor &donorBuffer){
 // continue
 void DonorDatabase::writeDBFile(){
 	string fileName;
-	cout << "Enter a filename: ";
+	cout << "Enter a filename: " << endl;
 	cin >> fileName;
 
-	ofsteam outputFile (fileName, ios::out);
-	outputFile.open();
+	ofstream outputFile;
+	outputFile.open("test.txt");
 	if(outputFile.is_open()){
 		for(int i = 0; i < max; i++){
 			if(this->db[i].getAge() == -1){
@@ -84,7 +65,7 @@ void DonorDatabase::writeDBFile(){
 }
 
 void DonorDatabase::readDBFile(){
-	
+	cout << "Reading.." << endl;
 }
 
 //Format : 
@@ -92,5 +73,5 @@ void DonorDatabase::readDBFile(){
 // Total Amount Donated: float total
 //
 void DonorDatabase::printReport(){
-
+	cout << "Printing a report..." << endl;
 }

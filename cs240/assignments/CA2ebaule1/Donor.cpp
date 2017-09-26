@@ -55,7 +55,6 @@ Donor::Donor() {
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
-			
 		}
 	}
 
@@ -114,6 +113,10 @@ Donor::Donor() {
 			cout << "Input validation failed." << endl;
 		}
 	}
+}
+
+Donor::~Donor(){
+
 }
 
 //Accessors
@@ -421,12 +424,12 @@ bool Donor::validateStreetNumber(const int &input){
 
 //true if only letters and spaces
 bool Donor::validateStreetNameTown(const string &input){
-	for (int i = 0; i < input.size(); i++)
+	/*for (int i = 0; i < input.size(); i++)
 	{
 		if(!isalpha(input[i]) || !isspace(input[i])){
 			return false;
 		}
-	}
+	}*/
 	return true;
 }
 

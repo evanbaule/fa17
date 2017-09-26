@@ -18,31 +18,35 @@ int main(int argc, char *argv[])
 	else 
 		use default constructor
 	*/
-	string dbFileName;
-	int maxLen = 1;
-	if(argc > 0){
-		maxLen = argv[0];
-		DonorDatabase * db = new DonorDatabase(maxLen);
-		if(argc > 1){
-			dbFileName = argv[1];
-			db->readDBFile(dbFileName);
-		}
-	} else {
-		DonorDatabase * db = new DonorDatabase();
-	}
+
+	string dbFileName = "default.txt";
+	int maxLen = 2;
+	//int maxLen = atoi(argv[0]);
+	DonorDatabase * donors = new DonorDatabase(maxLen);
+
+	cout << "Testing purposes" << endl;
+	Donor * testDonor = new Donor();
+
+	cout<<"printing deets"<<endl;
+	testDonor->viewDonorDetails();
+
+	cout <<"Donating"<<endl;
+	testDonor->donate();
+
+
 
 	/* Prompt */
 	string inputCommand;
 	while(inputCommand != "Quit"){
-		cout << "Enter a command. " << endl << "Choose from: " << endl;
+		cout << "Enter a command. " << endl << "Choose from: Login, Add, Save, Load, Report, Quit." << endl;
 		cin >> inputCommand;
 
 		if(inputCommand == "Login"){
 			string userIdInput;
 			cout << "Enter your userID: " << endl;
 			cin >> userIdInput;
-			if(db->searchUID(userIdInput)){
-				if(db->login(userIdInput)){
+			if(donors->searchUserID(userIdInput)){
+				/*if(donors->login(userIdInput)){
 					Donor activeUser; //need to establish this somehow to call functions on it
 					string internalInputCommand;
 					while(internalInputCommand != "Logout"){
@@ -72,24 +76,26 @@ int main(int argc, char *argv[])
 							cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 						}
 					}
-				}	
+				}	*/
 			}
 		}else if(inputCommand == "Add") {
 			//prompt construction of new user
-			Donor * newDonor = new Donor();
-			db->addDonor(const &newDonor);
+			//donors->addDonor();
 		}else if(inputCommand == "Save") {
-			db->writeDBFile();
+			donors->writeDBFile();
 		}else if(inputCommand == "Load") {
-			db->readDBFile();
+			donors->readDBFile();
 		}else if(inputCommand == "Report") {
-			db->printReport();
+			donors->printReport();
 		}else if(inputCommand == "Help") {
 			cout << "Valid command options: Login, Add, Save, Load, Report, Help" << endl;
+		}else if(inputCommand == "Quit"){
+			break;
 		}else {
 			cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 		}
 	}
+	cout << "Exiting" << endl;
 
 	//deconstruct references
 	//free memory
