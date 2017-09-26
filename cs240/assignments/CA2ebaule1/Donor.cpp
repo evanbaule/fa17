@@ -9,8 +9,180 @@ using namespace std;
 
 // Construction
 Donor::Donor() {
+	//Establish defaults
+	lastName = "default";
+	firstName = "default";
+	userID = "default";
+	age = -1;
+	streetNumber = -1;
+	streetName = "default";
+	town = "default";
+	state = "NY";
+	//state = states.NY;
+	zip = "default";
+	totalDonated = -1;
 
+	int ibuff;
+	float fbuff;
+	string buffer;
+	while(true){
+		cout << "Enter a Last Name: ";
+		cin >> buffer;
+		if(validateName(buffer)){
+			lastName = buffer; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
+
+	while(true){
+		cout << "Enter a First Name: ";
+		cin >> buffer;
+		if(validateName(buffer)){
+			firstName = buffer; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
+
+	while(true){
+		cout << "Enter an Age: ";
+		cin >> ibuff;
+		if(validateAge(ibuff)){
+			age = ibuff; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+			
+		}
+	}
+
+	while(true){
+		cout << "Enter a Street Number: ";
+		cin >> ibuff;
+		if(validateStreetNumber(ibuff)){
+			streetNumber = ibuff; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+			
+		}
+	}
+
+	while(true){
+		cout << "Street Name: ";
+		cin >> buffer;
+		if(validateStreetNameTown(buffer)){
+			streetName = buffer; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
+
+	while(true){
+		cout << "Town: ";
+		cin >> buffer;
+		if(validateStreetNameTown(buffer)){
+			town = buffer; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
+
+	while(true){
+		cout << "Zip: ";
+		cin >> buffer;
+		if(validateZip(buffer)){
+			zip = buffer; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
+
+	while(true){
+		cout << "Donation Amount: ";
+		cin >> fbuff;
+		if(validateTotalDonated(fbuff)){
+			streetName = fbuff; //maybe deref? possible issue
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
 }
+
+//Accessors
+//This feels literally disgusting, why do we have to do this much as mediocre c++ developers i dont get it give us 2 properties not 12
+string Donor::getLastName(){
+	return lastName;
+}
+string Donor::getFirstName(){
+	return firstName;
+}
+string Donor::getUserID(){
+	return userID;
+}
+string Donor::getPassWord(){
+	//not implementing yet
+}
+int Donor::getAge(){
+	return age;
+}
+int Donor::getStreetNumber(){
+	return streetNumber;
+}
+string Donor::getStreetName(){
+	return streetName;
+}
+string Donor::getTown(){
+	return town;
+}
+string Donor::getState(){
+	return state;
+}
+string Donor::getZip(){
+	return zip;
+}
+float Donor::getTotalDonated(){
+	return totalDonated;
+}
+
+void Donor::setLastName(string lastName){
+	this->lastName = lastName;
+}
+void Donor::setFirstName(string firstName){
+	this->firstName = firstName;
+}
+void Donor::setUserID(string userID){
+	this->userID = userID;
+}
+void Donor::setPassWord(string password){
+	this->password = password;
+}
+void Donor::setAge(int age){
+	this->age = age;
+}
+void Donor::setStreetNumber(int age){
+	this->streetNumber = streetNumber;
+}
+void Donor::setStreetName(string streetName){
+	this->streetName = streetName;
+}
+void Donor::setTown(string town){
+	this->town = town;
+}
+void Donor::setState(string state){
+	this->state = state;
+}
+void Donor::setTotalDonated(float totalDonated){
+	this->totalDonated = totalDonated;
+}
+
 
 // Input command : 'Manage'
 // Choose a member property and change it after validation

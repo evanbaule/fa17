@@ -6,14 +6,15 @@
 #include "string"
 #include "stdlib.h"
 #include "iostream"
+#include "Donor.h"
 
 
 class DonorDatabase
 {
 public:
-	DonorDatabase();
 	DonorDatabase(int maxLen);
-	void searchUserID(string userID);
+	bool searchUserID(string userID);
+	Donor * returnUserByID(string userIDSearch);
 	void addDonor(const Donor &donorBuffer);
 	void writeDBFile();
 	void readDBFile();
@@ -21,7 +22,8 @@ public:
 	~DonorDatabase();
 
 private:
-	
+	int max;
+	Donor * db;
 };
 
 
