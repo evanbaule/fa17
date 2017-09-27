@@ -1,3 +1,4 @@
+//I am so sorry...
 /*--References--*/
 #include "Donor.h"
 #include "iostream"
@@ -10,9 +11,11 @@ using namespace std;
 // Construction
 Donor::Donor() {
 	//Establish defaults
+	exists = false;
+	userID = "default";
+	password = "default";
 	lastName = "default";
 	firstName = "default";
-	userID = "default";
 	age = -1;
 	streetNumber = -1;
 	streetName = "default";
@@ -32,11 +35,28 @@ void Donor::addPropertiesSequential(){
 	int ibuff;
 	float fbuff;
 	string buffer;
+
+	//TEMPORARY
+	cout << "Enter a valid UserID" << endl;
+	cin >> buffer;
+	userID = buffer;
+
+	while(true){
+		cout << "Enter a Password: ";
+		cin >> buffer;
+		if(validatePassword(buffer)){
+			password = buffer;
+			break;
+		} else {
+			cout << "Input validation failed." << endl;
+		}
+	}
+
 	while(true){
 		cout << "Enter a Last Name: ";
 		cin >> buffer;
 		if(validateName(buffer)){
-			lastName = buffer; //maybe deref? possible issue
+			lastName = buffer;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -47,7 +67,7 @@ void Donor::addPropertiesSequential(){
 		cout << "Enter a First Name: ";
 		cin >> buffer;
 		if(validateName(buffer)){
-			firstName = buffer; //maybe deref? possible issue
+			firstName = buffer;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -58,7 +78,7 @@ void Donor::addPropertiesSequential(){
 		cout << "Enter an Age: ";
 		cin >> ibuff;
 		if(validateAge(ibuff)){
-			age = ibuff; //maybe deref? possible issue
+			age = ibuff;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -69,7 +89,7 @@ void Donor::addPropertiesSequential(){
 		cout << "Enter a Street Number: ";
 		cin >> ibuff;
 		if(validateStreetNumber(ibuff)){
-			streetNumber = ibuff; //maybe deref? possible issue
+			streetNumber = ibuff;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -81,7 +101,7 @@ void Donor::addPropertiesSequential(){
 		cout << "Street Name: ";
 		cin >> buffer;
 		if(validateStreetNameTown(buffer)){
-			streetName = buffer; //maybe deref? possible issue
+			streetName = buffer;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -92,7 +112,7 @@ void Donor::addPropertiesSequential(){
 		cout << "Town: ";
 		cin >> buffer;
 		if(validateStreetNameTown(buffer)){
-			town = buffer; //maybe deref? possible issue
+			town = buffer;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -103,7 +123,7 @@ void Donor::addPropertiesSequential(){
 		cout << "Zip: ";
 		cin >> buffer;
 		if(validateZip(buffer)){
-			zip = buffer; //maybe deref? possible issue
+			zip = buffer;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
@@ -114,16 +134,22 @@ void Donor::addPropertiesSequential(){
 		cout << "Donation Amount: ";
 		cin >> fbuff;
 		if(validateTotalDonated(fbuff)){
-			streetName = fbuff; //maybe deref? possible issue
+			totalDonated = fbuff;
 			break;
 		} else {
 			cout << "Input validation failed." << endl;
 		}
 	}
+
+	exists = true;
 }
 
 //Accessors
-//This feels literally disgusting, why do we have to do this much as mediocre c++ developers i dont get it give us 2 properties not 12
+//This feels literally disgusting
+bool Donor::getExists(){
+	return exists;
+}
+
 string Donor::getLastName(){
 	return lastName;
 }
@@ -133,8 +159,8 @@ string Donor::getFirstName(){
 string Donor::getUserID(){
 	return userID;
 }
-string Donor::getPassWord(){
-	//not implementing yet
+string Donor::getPassword(){
+	return password;
 }
 int Donor::getAge(){
 	return age;
@@ -167,13 +193,13 @@ void Donor::setFirstName(string firstName){
 void Donor::setUserID(string userID){
 	this->userID = userID;
 }
-void Donor::setPassWord(string password){
+void Donor::setPassword(string password){
 	this->password = password;
 }
 void Donor::setAge(int age){
 	this->age = age;
 }
-void Donor::setStreetNumber(int age){
+void Donor::setStreetNumber(int streetNumber){
 	this->streetNumber = streetNumber;
 }
 void Donor::setStreetName(string streetName){
@@ -182,6 +208,10 @@ void Donor::setStreetName(string streetName){
 void Donor::setTown(string town){
 	this->town = town;
 }
+void Donor::setZip(string zip){
+	this->zip = zip;
+}
+
 void Donor::setState(string state){
 	this->state = state;
 }
@@ -207,6 +237,7 @@ void Donor::manageDonor(){
 			if(validateName(buffer)){
 				this->lastName = buffer; //maybe deref? possible issue
 				cout << "Last Name changed to: " << this->lastName << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -220,6 +251,8 @@ void Donor::manageDonor(){
 			if(validateName(buffer)){
 				this->firstName = buffer; //maybe deref? possible issue
 				cout << "First Name changed to: " << this->firstName << endl;
+				break;
+
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -233,6 +266,7 @@ void Donor::manageDonor(){
 			if(validateAge(buffer)){
 				this->age = buffer; //maybe deref? possible issue
 				cout << "Age changed to: " << this->age << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -246,6 +280,7 @@ void Donor::manageDonor(){
 			if(validateStreetNumber(buffer)){
 				this->streetNumber = buffer; //maybe deref? possible issue
 				cout << "Street Number changed to: " << this->streetNumber << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -259,6 +294,7 @@ void Donor::manageDonor(){
 			if(validateStreetNameTown(buffer)){
 				this->streetName = buffer; //maybe deref? possible issue
 				cout << "Street Name changed to: " << this->streetName << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -272,6 +308,7 @@ void Donor::manageDonor(){
 			if(validateStreetNameTown(buffer)){
 				this->town = buffer; //maybe deref? possible issue
 				cout << "Town changed to: " << this->town << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -289,6 +326,7 @@ void Donor::manageDonor(){
 			if(validateZip(buffer)){
 				this->zip = buffer; //maybe deref? possible issue
 				cout << "Zip Code changed to: " << this->zip << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -302,6 +340,7 @@ void Donor::manageDonor(){
 			if(validateTotalDonated(buffer)){
 				this->totalDonated = buffer; //maybe deref? possible issue
 				cout << "Amount Donated changed to: " << this->totalDonated << endl;
+				break;
 			} else {
 				cout << "Input validation failed." << endl;
 				validationFlag = false;
@@ -335,6 +374,17 @@ void Donor::changePassword(){
 				this->password = buffer;
 			}
 		}
+	}
+}
+
+bool Donor::login(){
+	cout << "Enter your password: ";
+	string passBuffer;
+	cin >> passBuffer;
+	if(passBuffer == password){
+		return true;
+	} else {
+		return false;
 	}
 }
 
@@ -395,7 +445,7 @@ bool Donor::validateName(const string &input){
 
 //true if 4 < len < 11 and only letters and digits
 bool Donor::validateUserID(const string &input){
-
+	return false;
 }
 
 //true if password is 6 or more characters and contains 1 digit and 1 symbol

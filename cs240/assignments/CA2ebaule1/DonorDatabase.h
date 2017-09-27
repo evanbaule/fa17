@@ -19,6 +19,9 @@ public:
 	void writeDBFile();
 	void readDBFile();
 	void printReport();
+
+	int getMax();
+
 	~DonorDatabase();
 
 private:

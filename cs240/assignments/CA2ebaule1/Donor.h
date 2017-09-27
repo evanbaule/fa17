@@ -14,6 +14,7 @@ class Donor
 {
 public:
 	Donor();
+	bool login();
 	void addPropertiesSequential();
 	void manageDonor();
 	void changePassword();
@@ -33,11 +34,12 @@ public:
 	bool validateTotalDonated(const float &input);
 
 	/*--Access--*/
-	//Get
+	//Get 
+	bool getExists();
 	string getLastName();
 	string getFirstName();
 	string getUserID();
-	string getPassWord();
+	string getPassword();
 	int getAge();
 	int getStreetNumber();
 	string getStreetName();
@@ -50,7 +52,7 @@ public:
 	void setLastName(string lastName);
 	void setFirstName(string firstName);
 	void setUserID(string userID);
-	void setPassWord(string password);
+	void setPassword(string password);
 	void setAge(int age);
 	void setStreetNumber(int streetNumber);
 	void setStreetName(string streetName);
@@ -65,6 +67,7 @@ public:
 
 
 private:
+	bool exists;
 	string lastName;
 	string firstName;
 	string userID;

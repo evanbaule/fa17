@@ -19,29 +19,31 @@ int main(int argc, char *argv[])
 		use default constructor
 	*/
 
-	string dbFileName = "default.txt";
-	int maxLen = 2;
-	//int maxLen = atoi(argv[0]);
-	DonorDatabase * donors = new DonorDatabase(maxLen);
+	int maxLen = 1000; //to get around comp error of it not existing
+	DonorDatabase * donors;
+	if(argc > 1){
+		string dbFileName = "default.txt";
+		maxLen = atoi(argv[1]);
+		donors = new DonorDatabase(maxLen);
 
+		if(argc == 3){
+			//dbFileName = argv[1];
+		}
 
-	/*
-	cout << "Testing purposes" << endl;
-	Donor * testDonor = new Donor();
+		if(argc > 3){
+			cout << "Ignoring all arguments beyond argv[1]." << endl;
+		}
+	} else {
+		cout << "Invalid Arguments: Need to provide max length of db array. Exiting..." << endl;
+		exit(0);
+	}
 
-	cout<<"printing deets"<<endl;
-	testDonor->viewDonorDetails();
-
-	cout <<"Donating"<<endl;
-	testDonor->donate();
-
-	*/
-
+	
 
 	/* Prompt */
 	string inputCommand;
 	while(inputCommand != "Quit"){
-		cout << "Enter a command. " << endl << "Choose from: Login, Add, Save, Load, Report, Quit." << endl;
+		cout << "Enter a command: Login, Add, Save, Load, Report, or Quit." << endl;
 		cin >> inputCommand;
 
 		if(inputCommand == "Login"){
@@ -49,37 +51,41 @@ int main(int argc, char *argv[])
 			cout << "Enter your userID: " << endl;
 			cin >> userIdInput;
 			if(donors->searchUserID(userIdInput)){
-				/*if(donors->login(userIdInput)){
-					Donor activeUser; //need to establish this somehow to call functions on it
+				Donor * activeUser = donors->returnUserByID(userIdInput);//need to establish this somehow to call functions on it
+				if(activeUser->login()){
+					cout << "Welcome " << activeUser->getFirstName() << " " << activeUser->getLastName() << endl;
 					string internalInputCommand;
 					while(internalInputCommand != "Logout"){
-						cout << "Enter a command: " << endl;
+						cout << "Please enter a command: Manage, Passwd, View, Donate, Total, or Logout." << endl;
 						cin >> internalInputCommand;
 
 						if(internalInputCommand == "Manage")
 						{
-							activeUser.manageDonor();	
+							activeUser->manageDonor();	
 						}
 						else if(internalInputCommand == "Passwd"){
-							activeUser.changePassword();
+							activeUser->changePassword();
 						}
 						else if(internalInputCommand == "View"){
-							activeUser.viewDonorDetails();
+							activeUser->viewDonorDetails();
 						}
 						else if(internalInputCommand == "Donate"){
-							activeUser.donate();
+							activeUser->donate();
 						}
 						else if(internalInputCommand == "Total"){
-							activeUser.printTotal();
+							activeUser->printTotal();
 						}
 						else if(internalInputCommand == "Help"){
 							cout << "Valid command options: Manage, Passwd, View, Donate, Total, Help, Logout" << endl;
+						}
+						else if(internalInputCommand == "Logout"){
+							break;
 						}
 						else {
 							cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 						}
 					}
-				}	*/
+				}	
 			}
 		}else if(inputCommand == "Add") {
 			donors->addDonor();
