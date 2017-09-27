@@ -22,11 +22,12 @@ bool DonorDatabase::searchUserID(string userIDSearch){
 }
 
 Donor * DonorDatabase::returnUserByID(string userIDSearch){
+	Donor *retgay = new Donor();
 	for(int i = 0; i < max; i++){
 		if(db[i].getUserID() == userIDSearch){
-			return &db[i];
+			retgay = &db[i];
 		}
-	}
+	} return retgay;
 }
 
 void DonorDatabase::addDonor(){
@@ -77,72 +78,70 @@ void DonorDatabase::writeDBFile(){
 	cout << "Database File Written." << endl;
 }
 
-void DonorDatabase::readDBFile(){
-	cout << "Reading.." << endl;
-	string fileName;
-	cout << "Enter a filename (ending with .txt): " << endl;
-	cin >> fileName;
 
-	ifstream inputFile;
-	inputFile.open(fileName, ios::in);
-	if(inputFile.is_open()){
+void DonorDatabase::readDBFile(string fileName){
+	//I'm so sorry
+	int totalLines = 0;
+	int totalDonors = totalLines/11;
+	ifstream counterStream(fileName);
+	if(counterStream.is_open()){
 		int totalLines = 0;
 		string buffer;
-		for(int i = 0; getline(inputFile, buffer); i++){
+		for(int i = 0; getline(counterStream, buffer); i++){
 			totalLines++;
 		}
+		counterStream.close();
+	}
+	cout << totalLines << " lines" << endl;
+	cout << totalDonors << " donors" << endl;
 
-		cout << totalLines << " lines" << endl;
-		int totalDonors = totalLines/11;
-		cout << totalDonors << " donors" << endl;
-		for(int i = 0; i < totalDonors; i++){
-			 string inputBuffer;
-			 //Obj @i userID
-			 getline(inputFile, inputBuffer);
-			 cout << "read " << inputBuffer << " as ID" << endl;
-			 db[i].setUserID(inputBuffer);
-			 //Obj @i userID
-			 getline(inputFile, inputBuffer);
-			 cout << "read " << inputBuffer << " as pw" << endl;
-			 db[i].setPassword(inputBuffer);
+	cout << "Reading.." << endl;
+	string inputBuffer;
+	ifstream inputFile(fileName);
+	if(inputFile.is_open()){
+		for(int i = 0; i < max; i++){
+			db[i].setExists(true);
+			//Obj @i userID
+			getline(inputFile, inputBuffer);
+			
+			db[i].setUserID(inputBuffer);
+			//Obj @i userID
+			getline(inputFile, inputBuffer);
+			db[i].setPassword(inputBuffer);
 
-			 //Obj @i lastName
-			 getline(inputFile, inputBuffer);
-			 cout << "read " << inputBuffer << " as last" << endl;
-			 db[i].setLastName(inputBuffer);
-			 //Obj @i firstName
-			 getline(inputFile, inputBuffer);
-			 cout << "read " << inputBuffer << " as first" << endl;
-			 db[i].setFirstName(inputBuffer);
-			 //Obj @i age
-			 getline(inputFile, inputBuffer);
-			 cout << "read " << inputBuffer << " as age" << endl;
-			 db[i].setAge(stoi(inputBuffer));
+			//Obj @i lastName
+			getline(inputFile, inputBuffer);
+			db[i].setLastName(inputBuffer);
+			//Obj @i firstName
+			getline(inputFile, inputBuffer);
+			db[i].setFirstName(inputBuffer);
+			//Obj @i age
+			getline(inputFile, inputBuffer);
+			db[i].setAge(stoi(inputBuffer));
 
-			 //Obj @i streetNumber
-			 getline(inputFile, inputBuffer);
-			 db[i].setStreetNumber(stoi(inputBuffer));
-			 //Obj @i streetName
-			 getline(inputFile, inputBuffer);
-			 db[i].setStreetName(inputBuffer);
-			 //Obj @i town
-			 getline(inputFile, inputBuffer);
-			 db[i].setTown(inputBuffer);
-			 //Obj @i state
-			 getline(inputFile, inputBuffer);
-			 db[i].setState(inputBuffer);
+			//Obj @i streetNumber
+			getline(inputFile, inputBuffer);
+			db[i].setStreetNumber(stoi(inputBuffer));
+			//Obj @i streetName
+			getline(inputFile, inputBuffer);
+			db[i].setStreetName(inputBuffer);
+			//Obj @i town
+			getline(inputFile, inputBuffer);
+			db[i].setTown(inputBuffer);
+			//Obj @i state
+			getline(inputFile, inputBuffer);
+			db[i].setState(inputBuffer);
 
-			 //Obj @i zip
-			 getline(inputFile, inputBuffer);
-			 db[i].setZip(inputBuffer);
+			//Obj @i zip
+			getline(inputFile, inputBuffer);
+			db[i].setZip(inputBuffer);
 
-			 //Obj @i totalDonated
-			 getline(inputFile, inputBuffer);
-			 db[i].setTotalDonated(stof(inputBuffer));
+			//Obj @i totalDonated
+			getline(inputFile, inputBuffer);
+			db[i].setTotalDonated(stof(inputBuffer));
 		}
 	}
-	
-
+	inputFile.close();
 	cout << "Database File Loaded." << endl;
 }
 

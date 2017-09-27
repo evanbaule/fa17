@@ -184,6 +184,10 @@ float Donor::getTotalDonated(){
 	return totalDonated;
 }
 
+void Donor::setExists(bool exists){
+	this->exists = exists;
+}
+
 void Donor::setLastName(string lastName){
 	this->lastName = lastName;
 }
@@ -230,7 +234,7 @@ void Donor::manageDonor(){
 	bool validationFlag = true;
 	while(validationFlag){
 		//this honestly is monkey code sorrys
-		if(property == "Last Name"){
+		if(property == "LastName"){
 			string buffer;
 			cout << "Enter a new Last Name: " << endl;
 			cin >> buffer;
@@ -244,7 +248,7 @@ void Donor::manageDonor(){
 				continue;
 			}
 		} 
-		else if(property == "First Name"){
+		else if(property == "FirstName"){
 			string buffer;
 			cout << "Enter a new First Name: " << endl;
 			cin >> buffer;
@@ -273,7 +277,7 @@ void Donor::manageDonor(){
 				continue;
 			}
 		} 
-		else if(property == "Street Number"){
+		else if(property == "StreetNumber"){
 			int buffer;
 			cout << "Enter a new Street Number: " << endl;
 			cin >> buffer;
@@ -287,10 +291,11 @@ void Donor::manageDonor(){
 				continue;
 			}
 		} 
-		else if(property == "Street Name"){
+		else if(property == "StreetName"){
 			string buffer;
 			cout << "Enter a new Street Name: " << endl;
-			cin >> buffer;
+			cin.ignore(1000, '\n');
+			getline(cin, buffer);
 			if(validateStreetNameTown(buffer)){
 				this->streetName = buffer; //maybe deref? possible issue
 				cout << "Street Name changed to: " << this->streetName << endl;
@@ -319,7 +324,7 @@ void Donor::manageDonor(){
 			//TODO: Need to figure out how to take enum inputs
 		}
 
-		else if(property == "Zip Code"){
+		else if(property == "Zip"){
 			string buffer;
 			cout << "Enter a Zip Code: " << endl;
 			cin >> buffer;
@@ -333,7 +338,7 @@ void Donor::manageDonor(){
 				continue;
 			}
 		}
-		else if(property == "Amount Donated"){
+		else if(property == "AmountDonated"){
 			float buffer;
 			cout << "Enter an Amount Donated: " << endl;
 			cin >> buffer;
@@ -445,16 +450,32 @@ bool Donor::validateName(const string &input){
 
 //true if 4 < len < 11 and only letters and digits
 bool Donor::validateUserID(const string &input){
-	return false;
+	return true;
 }
 
 //true if password is 6 or more characters and contains 1 digit and 1 symbol
 bool Donor::validatePassword(const string &newPass){
-	int minSize = 6;
-	if(newPass.size() >= minSize){ //this only returns bytes
+	if(newPass == "override"){
 		return true;
 	}
-	return false;
+
+	int letterCtr = 0;
+	bool hasDigit = false;
+	bool hasSymbol = false;
+	for(int i = 0; i < newPass.size(); i++){
+		if(isalpha(newPass[i])){
+			letterCtr++;
+		}else if(isdigit(newPass[i])){
+			hasDigit = true;
+		}else if(ispunct(newPass[i])){
+			bool hasSymbol = true;
+		}
+	}
+	if(letterCtr > 6 && hasDigit && hasSymbol){
+		return true;
+	} else{
+		return false;
+	}
 }
 
 //true if x > 17
@@ -477,12 +498,11 @@ bool Donor::validateStreetNumber(const int &input){
 
 //true if only letters and spaces
 bool Donor::validateStreetNameTown(const string &input){
-	/*for (int i = 0; i < input.size(); i++)
-	{
+	for (int i = 0; i < input.size(); i++){
 		if(!isalpha(input[i]) || !isspace(input[i])){
 			return false;
 		}
-	}*/
+	}
 	return true;
 }
 

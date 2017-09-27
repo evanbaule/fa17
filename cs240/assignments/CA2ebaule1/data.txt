@@ -1,12 +1,16 @@
+ebaule1
+override
 Baule
 Evan
 20
 124
 Canterbury
-13031
+Camillus
 NY
 13031
-1200.24
+1243
+cforno12
+override
 Forno
 Cris
 20
@@ -15,7 +19,9 @@ Oak
 Binghamton
 NY
 13905
-2400.42
+1454.24
+adambomb41
+override
 Baule
 Adam
 23
@@ -24,4 +30,4 @@ Canterbury
 Camillus
 NY
 13031
-4444.44
+4999.99

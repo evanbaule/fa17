@@ -49,6 +49,7 @@ public:
 	float getTotalDonated();
 
 	//Set
+	void setExists(bool exists);
 	void setLastName(string lastName);
 	void setFirstName(string firstName);
 	void setUserID(string userID);

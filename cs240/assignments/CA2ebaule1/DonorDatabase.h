@@ -17,7 +17,7 @@ public:
 	Donor * returnUserByID(string userIDSearch);
 	void addDonor();
 	void writeDBFile();
-	void readDBFile();
+	void readDBFile(string fileName);
 	void printReport();
 
 	int getMax();

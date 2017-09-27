@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 		donors = new DonorDatabase(maxLen);
 
 		if(argc == 3){
-			//dbFileName = argv[1];
+			donors->readDBFile(argv[2]);
 		}
 
 		if(argc > 3){
@@ -92,7 +92,10 @@ int main(int argc, char *argv[])
 		}else if(inputCommand == "Save") {
 			donors->writeDBFile();
 		}else if(inputCommand == "Load") {
-			donors->readDBFile();
+			string fileName;
+			cout << "Enter a filename (ending with .txt): " << endl;
+			cin >> fileName;
+			donors->readDBFile(fileName);
 		}else if(inputCommand == "Report") {
 			donors->printReport();
 		}else if(inputCommand == "Help") {
