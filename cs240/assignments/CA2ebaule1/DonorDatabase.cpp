@@ -14,7 +14,6 @@ using namespace std;
 DonorDatabase::DonorDatabase(int maxLen){
 	max = maxLen;
 	db = new Donor[max];
-	
 }
 
 bool DonorDatabase::searchUserID(string userIDSearch){
@@ -22,12 +21,12 @@ bool DonorDatabase::searchUserID(string userIDSearch){
 }
 
 Donor * DonorDatabase::returnUserByID(string userIDSearch){
-	Donor *retgay = new Donor();
+	Donor *retDonor = new Donor();
 	for(int i = 0; i < max; i++){
 		if(db[i].getUserID() == userIDSearch){
-			retgay = &db[i];
+			retDonor = &db[i];
 		}
-	} return retgay;
+	} return retDonor;
 }
 
 void DonorDatabase::addDonor(){
@@ -40,7 +39,6 @@ void DonorDatabase::addDonor(){
 		}
 	}
 
-	cout << "insertIndex: " << insertIndex << " -- max: " << max << endl;
 	if(insertIndex == max){
 		cout << "List full... returning..." << endl;
 	} else {
@@ -75,12 +73,12 @@ void DonorDatabase::writeDBFile(){
 		cout << "Cannot override existing files." << endl;
 	}
 
-	cout << "Database File Written." << endl;
+	cout << "Writing..." << endl << "Database File Written." << endl;
 }
 
 
 void DonorDatabase::readDBFile(string fileName){
-	//I'm so sorry
+	//I'm so sorry i should have just saved the length at the top of the db file
 	int totalLines = 0;
 	int totalDonors = totalLines/11;
 	ifstream counterStream(fileName);
@@ -92,8 +90,6 @@ void DonorDatabase::readDBFile(string fileName){
 		}
 		counterStream.close();
 	}
-	cout << totalLines << " lines" << endl;
-	cout << totalDonors << " donors" << endl;
 
 	cout << "Reading.." << endl;
 	string inputBuffer;
@@ -151,15 +147,15 @@ void DonorDatabase::readDBFile(string fileName){
 //
 void DonorDatabase::printReport(){
 	int counter = 0;
-	for(int i = 0; i < this->max; i++){
-		if(this->db[i].getExists()){
+	for(int i = 0; i < max; i++){
+		if(db[i].getExists()){
 			counter++;
 		}
 	}
 	cout << "Total: " << counter << " donors." << endl;
 	for (int i = 0; i < counter; i++)
 	{
-		this->db[i].viewDonorDetails();
+		db[i].viewDonorDetails();
 	}
 }
 

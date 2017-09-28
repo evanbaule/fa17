@@ -20,7 +20,7 @@ Donor::Donor() {
 	streetNumber = -1;
 	streetName = "default";
 	town = "default";
-	state = "NY";
+	state = "default";
 	//state = states.NY;
 	zip = "default";
 	totalDonated = -1;
@@ -228,7 +228,7 @@ void Donor::setTotalDonated(float totalDonated){
 // Choose a member property and change it after validation
 void Donor::manageDonor(){
 	string property;
-	cout << "Enter a property to manage: ";
+	cout << "Enter a property to manage: LastName, FirstName, Age, StreetNumber, StreetName, Town, Zip, State, or AmountDonated." << endl;
 	cin >> property;
 
 	bool validationFlag = true;
@@ -239,8 +239,8 @@ void Donor::manageDonor(){
 			cout << "Enter a new Last Name: " << endl;
 			cin >> buffer;
 			if(validateName(buffer)){
-				this->lastName = buffer; //maybe deref? possible issue
-				cout << "Last Name changed to: " << this->lastName << endl;
+				lastName = buffer; 
+				cout << "Last Name changed to: " << lastName << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -253,8 +253,8 @@ void Donor::manageDonor(){
 			cout << "Enter a new First Name: " << endl;
 			cin >> buffer;
 			if(validateName(buffer)){
-				this->firstName = buffer; //maybe deref? possible issue
-				cout << "First Name changed to: " << this->firstName << endl;
+				firstName = buffer; 
+				cout << "First Name changed to: " << firstName << endl;
 				break;
 
 			} else {
@@ -268,8 +268,8 @@ void Donor::manageDonor(){
 			cout << "Enter a new Age: " << endl;
 			cin >> buffer;
 			if(validateAge(buffer)){
-				this->age = buffer; //maybe deref? possible issue
-				cout << "Age changed to: " << this->age << endl;
+				age = buffer; 
+				cout << "Age changed to: " << age << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -282,8 +282,8 @@ void Donor::manageDonor(){
 			cout << "Enter a new Street Number: " << endl;
 			cin >> buffer;
 			if(validateStreetNumber(buffer)){
-				this->streetNumber = buffer; //maybe deref? possible issue
-				cout << "Street Number changed to: " << this->streetNumber << endl;
+				streetNumber = buffer; 
+				cout << "Street Number changed to: " << streetNumber << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -297,8 +297,8 @@ void Donor::manageDonor(){
 			cin.ignore(1000, '\n');
 			getline(cin, buffer);
 			if(validateStreetNameTown(buffer)){
-				this->streetName = buffer; //maybe deref? possible issue
-				cout << "Street Name changed to: " << this->streetName << endl;
+				streetName = buffer; 
+				cout << "Street Name changed to: " << streetName << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -311,8 +311,8 @@ void Donor::manageDonor(){
 			cout << "Enter a new Town: " << endl;
 			cin >> buffer;
 			if(validateStreetNameTown(buffer)){
-				this->town = buffer; //maybe deref? possible issue
-				cout << "Town changed to: " << this->town << endl;
+				town = buffer; 
+				cout << "Town changed to: " << town << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -321,7 +321,18 @@ void Donor::manageDonor(){
 			}
 		}
 		else if(property == "State"){
-			//TODO: Need to figure out how to take enum inputs
+			string buffer;
+			cout << "Enter a new State: " << endl;
+			cin >> buffer;
+			if(validateState(buffer)){
+				state = buffer; 
+				cout << "State changed to: " << state << endl;
+				break;
+			} else {
+				cout << "Input validation failed." << endl;
+				validationFlag = false;
+				continue;
+			}
 		}
 
 		else if(property == "Zip"){
@@ -329,8 +340,8 @@ void Donor::manageDonor(){
 			cout << "Enter a Zip Code: " << endl;
 			cin >> buffer;
 			if(validateZip(buffer)){
-				this->zip = buffer; //maybe deref? possible issue
-				cout << "Zip Code changed to: " << this->zip << endl;
+				zip = buffer; 
+				cout << "Zip Code changed to: " << zip << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -343,8 +354,8 @@ void Donor::manageDonor(){
 			cout << "Enter an Amount Donated: " << endl;
 			cin >> buffer;
 			if(validateTotalDonated(buffer)){
-				this->totalDonated = buffer; //maybe deref? possible issue
-				cout << "Amount Donated changed to: " << this->totalDonated << endl;
+				totalDonated = buffer; 
+				cout << "Amount Donated changed to: " << totalDonated << endl;
 				break;
 			} else {
 				cout << "Input validation failed." << endl;
@@ -368,7 +379,7 @@ void Donor::changePassword(){
 
 	cout << "Please enter your current password : " << endl;
 	cin >> pw;
-	if(pw == this->password){
+	if(pw == password){
 		cout << "Please enter your new password : (remember it must be greater than 6 characters and contain 1 digit & 1 misc char" << endl;
 		cin >> buffer;
 		if(validatePassword(buffer)){
@@ -376,9 +387,14 @@ void Donor::changePassword(){
 			string buffer2;
 			cin >> buffer2;
 			if(buffer2 == buffer){
-				this->password = buffer;
+				password = buffer;
+				cout << "Password changed successfully." << endl;
+			}else {
+				cout << "Passwords did not match... Returning to menu." << endl;
 			}
 		}
+	} else {
+		cout << "Wrong password.. Returning to menu..." << endl;
 	}
 }
 
@@ -401,7 +417,7 @@ void Donor::viewDonorDetails(){
 	cout << "Donor Info: " <<  endl;
 	cout << lastName << " " << firstName << ": age " << age << endl;
 	cout << streetNumber << " " << streetName << endl;
-	cout << town << ", NY " << zip << endl;
+	cout << town << " " << state << ", " << zip << endl;
 	cout << "Current Amount Donated: ";
 	floatToDollarFormat(totalDonated);
 }
@@ -467,13 +483,14 @@ bool Donor::validatePassword(const string &newPass){
 			letterCtr++;
 		}else if(isdigit(newPass[i])){
 			hasDigit = true;
-		}else if(ispunct(newPass[i])){
-			bool hasSymbol = true;
+		}else if(!isalnum(newPass[i])){
+			hasSymbol = true;
 		}
 	}
 	if(letterCtr > 6 && hasDigit && hasSymbol){
 		return true;
 	} else{
+		cout << "Password did not meet requirements: Invalid Input." << endl << letterCtr << endl << hasDigit << endl << hasSymbol << endl;
 		return false;
 	}
 }
@@ -496,10 +513,26 @@ bool Donor::validateStreetNumber(const int &input){
 	}
 }
 
+bool Donor::validateState(const string &input){
+	if(input.size() == 2){
+		for (int i = 0; i < input.size(); i++)
+		{
+			if(!isalpha(input[i])){
+				return false;
+			}
+		}
+		return true;
+	} else {
+		return false;
+	}
+}
+
 //true if only letters and spaces
 bool Donor::validateStreetNameTown(const string &input){
+	cout << input << endl;
 	for (int i = 0; i < input.size(); i++){
-		if(!isalpha(input[i]) || !isspace(input[i])){
+		cout << input[i] << endl;
+		if(!isalpha(input[i]) && !isspace(input[i])){
 			return false;
 		}
 	}

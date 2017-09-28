@@ -30,6 +30,7 @@ public:
 	bool validateAge(const int &input);	
 	bool validateStreetNumber(const int &input);	
 	bool validateStreetNameTown(const string &input);
+	bool validateState(const string &input);
 	bool validateZip(const string &input);
 	bool validateTotalDonated(const float &input);
 
@@ -78,9 +79,6 @@ private:
 	string streetName;
 	string town;
 	string state;
-	//enum states{
-	//	NY, PA, RI, NH, VT, MA, CT, ME
-	//};
 	string zip;
 	float totalDonated;
 };

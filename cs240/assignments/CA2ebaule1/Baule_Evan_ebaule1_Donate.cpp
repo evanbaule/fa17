@@ -85,7 +85,9 @@ int main(int argc, char *argv[])
 							cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 						}
 					}
-				}	
+				} else {
+					cout << "Login attempt failed... Returning to menu." << endl;
+				}
 			}
 		}else if(inputCommand == "Add") {
 			donors->addDonor();
