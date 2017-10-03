@@ -17,4 +17,4 @@ Donate.o: Baule_Evan_ebaule1_Donate.cpp Donor.cpp DonorDatabase.cpp
 # Specify the object files and executables that are generated
 # and need to be removed to re-compile the whole thing
 clean:
-	rm -f *.o Donate.exe 
+	rm -f *.o Baule_Evan_ebaule1_Donate.exe 
