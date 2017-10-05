@@ -14,7 +14,6 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 
-	//TEST DATA Evan & Cris
 	FBLUser * def = new FBLUser();
 	def->read();
 
@@ -34,15 +33,18 @@ int main(int argc, char const *argv[])
 
 	FBLUserLL * users = new FBLUserLL();
 	cout << "Adding def..." << endl;
-	users->insert(def);
-	users->printLL();
-
+	if(users->insert(def)){
+		users->printLL();
+	}
+	
 	cout << "Adding evan..." << endl;
-	users->insert(evan);
-	users->printLL();
+	if(users->insert(evan)){
+		users->printLL();
+	}
 
 	cout << "Adding cris..." << endl;
-	users->insert(cris);
-	users->printLL();
+	if(users->insert(cris)){
+		users->printLL();
+	}
 
 }
