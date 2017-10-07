@@ -25,10 +25,10 @@ public:
 	FBLUserLL();
 
 	//Functionality
-	bool insert(FBLUser * newUser);
+	void insert(FBLUser * newUser);
 	bool findByUserID(string targetUserID);
 	//bool manageByUserID(string userID);
-	bool remove(string userIDTBR);
+	void remove(string userIDTBR);
 	void printLL();
 
 	//Destruction

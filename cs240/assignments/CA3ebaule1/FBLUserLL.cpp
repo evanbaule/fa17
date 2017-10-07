@@ -19,54 +19,70 @@ FBLUserLL::FBLUserLLNode::FBLUserLLNode(){
 	next = nullptr;
 }
 
-bool FBLUserLL::insert(FBLUser * newUser){
-	//PREPENDING LIST WITH newUser
-	/* Fuck prepending
-	FBLUserLLNode * insNode = new FBLUserLLNode();
-	insNode->data = newUser;
-	if(first != nullptr){
-		insNode->next = first;
-		first = insNode;
-		cout << "SUCCESS INSERT .. " << endl;
-		return true;
-	}
+FBLUserLL::FBLUserLLNode::~FBLUserLLNode(){
+	
+}
 
-	cout << "FAILED INSERT .. " << endl;
-	return false;
-	*/
-
-	//APPENDING LIST
+void FBLUserLL::insert(FBLUser * newUser){
+	//APPENDING not PREPENDING rip O(1) time
 	FBLUserLLNode * insertionPoint = first;
-	if(first != nullptr){
-		while(insertionPoint != nullptr){
+	FBLUserLLNode * newNode = new FBLUserLLNode();
+	newNode->data = newUser;
+	if(first == nullptr){
+		first = newNode;
+	} else {
+		while(insertionPoint->next){
 			insertionPoint = insertionPoint->next;
 		}
-		FBLUserLLNode * insertionNode = new FBLUserLLNode();
-		insertionNode->data = newUser; //TODO: new constructor that takes newUser as arg
-		insertionPoint->next = insertionNode;
-		return true;
-	} else {
-		first->data = newUser;
-		return true;
+		insertionPoint->next = newNode;
 	}
-	return false;
 }
 
 bool FBLUserLL::findByUserID(string targetUserID){
-	return true;
+	FBLUserLLNode * curr = first;
+	while(curr != nullptr){
+		if(curr->data->getUserID() == targetUserID){
+			return true;
+		}
+	}
+	return false;
 }
 
-bool FBLUserLL::remove(string userIDTBR){
-	return true;
+void FBLUserLL::remove(string userIDTBR){
+	cout << "------------------------------------" << endl << "entering... remove() ... " << endl;
+	if(first){
+		FBLUserLLNode * curr = first;
+		FBLUserLLNode * last = first->next;
+		cout << "entering traversal... " << endl;
+		while(curr->next != nullptr) {
+			if(curr->data->getUserID() == userIDTBR){
+				cout << "found user .. " << userIDTBR << " in node... " << endl;
+				if(curr->next){
+
+					cout << "skipping over.... " << endl;
+					last->next = curr->next;
+
+					cout << "deleting node..." << endl;
+					delete curr;
+				}
+			}
+			cout << "feedback looping .... " << endl;
+		}
+	}else {
+		cout << "List is empty" << endl;
+		//change to bool and return false here
+	}
 }
 
 void FBLUserLL::printLL(){
 	FBLUserLLNode * curr = first;
-	while(curr->next){
+	while(curr){
 		curr->data->read();
 		curr = curr->next;
 	}
 }
+
+
 
 
 
