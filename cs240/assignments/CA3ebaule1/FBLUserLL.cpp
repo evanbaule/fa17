@@ -40,10 +40,11 @@ void FBLUserLL::insert(FBLUser * newUser){
 
 bool FBLUserLL::findByUserID(string targetUserID){
 	FBLUserLLNode * curr = first;
-	while(curr != nullptr){
+	while(curr){
 		if(curr->data->getUserID() == targetUserID){
 			return true;
 		}
+		curr = curr->next;
 	}
 	return false;
 }
@@ -54,7 +55,7 @@ void FBLUserLL::remove(string userIDTBR){
 		FBLUserLLNode * curr = first;
 		FBLUserLLNode * last = first->next;
 		cout << "entering traversal... " << endl;
-		while(curr->next != nullptr) {
+		while(curr != nullptr) {
 			if(curr->data->getUserID() == userIDTBR){
 				cout << "found user .. " << userIDTBR << " in node... " << endl;
 				if(curr->next){
@@ -64,9 +65,13 @@ void FBLUserLL::remove(string userIDTBR){
 
 					cout << "deleting node..." << endl;
 					delete curr;
+				} else {
+					last->next = nullptr;
+					delete curr;
 				}
 			}
 			cout << "feedback looping .... " << endl;
+			curr = curr->next;
 		}
 	}else {
 		cout << "List is empty" << endl;
@@ -79,7 +84,7 @@ void FBLUserLL::printLL(){
 	while(curr){
 		curr->data->read();
 		curr = curr->next;
-	}
+	}	
 }
 
 

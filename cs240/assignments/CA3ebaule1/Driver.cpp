@@ -34,9 +34,18 @@ int main(int argc, char const *argv[])
 	users->insert(evan);
 	users->insert(cris);
 
-	string testingReader = evan->getUserID();
+	users->printLL();
+
+	users->remove("cforno12");
+
+	users->printLL();
+
+
+	string testingReader = cris->getUserID();
 	if(users->findByUserID(testingReader)){
 		cout << "found : " << testingReader << " in list. " << endl;
 	}
+
+
 	
 }
