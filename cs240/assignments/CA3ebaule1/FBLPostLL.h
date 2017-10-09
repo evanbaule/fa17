@@ -1,4 +1,7 @@
 //Header
+#ifndef POST_LL_H
+#define POST_LL_H 
+
 #include <stdlib.h>
 #include <iostream>
 #include <string>
@@ -27,3 +30,5 @@ private:
 	FBLPostLLNode * first;
 
 };
+
+#endif

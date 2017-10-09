@@ -14,6 +14,7 @@ FBLUser::FBLUser(){
 	password = "defPass";
 	lastName = "defLast";
 	firstName = "defFirst";
+	postList = new FBLPostLL();
 }
 
 bool FBLUser::post(string content){
@@ -59,6 +60,6 @@ void FBLUser::setFirstName(string newFirstName){
 
 //Destruction
 FBLUser::~FBLUser(){
-	//Implement
+
 }
 

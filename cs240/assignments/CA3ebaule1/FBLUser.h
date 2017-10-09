@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+#include "FBLPostLL.h"
+
 using namespace std;
 
 class FBLUser
@@ -41,6 +43,8 @@ private:
 	string password;
 	string lastName;
 	string firstName;
+
+	FBLPostLL * postList;
 
 	//Friends
 	//FBLUserLL * friendsList;

@@ -62,7 +62,6 @@ int main(int argc, char const *argv[])
 	cout << "expected:: 4 likes p2 content : " << endl;
 	p2->printContent();
 
-	cout << "LINKED LISTED NIGGA" << endl;
 	FBLPostLL * posts = new FBLPostLL();
 	posts->insert(p1);
 	posts->insert(p2);
