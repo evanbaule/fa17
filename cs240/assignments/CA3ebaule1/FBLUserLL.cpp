@@ -7,7 +7,6 @@
 #include "FBLUserLL.h"
 #include "FBLUser.h"
 
-
 using namespace std;
 
 FBLUserLL::FBLUserLL(){
@@ -50,32 +49,23 @@ bool FBLUserLL::findByUserID(string targetUserID){
 }
 
 void FBLUserLL::remove(string userIDTBR){
-	cout << "------------------------------------" << endl << "entering... remove() ... " << endl;
 	if(first){
 		FBLUserLLNode * curr = first;
 		FBLUserLLNode * last = first->next;
-		cout << "entering traversal... " << endl;
 		while(curr != nullptr) {
 			if(curr->data->getUserID() == userIDTBR){
-				cout << "found user .. " << userIDTBR << " in node... " << endl;
 				if(curr->next){
-
-					cout << "skipping over.... " << endl;
 					last->next = curr->next;
-
-					cout << "deleting node..." << endl;
 					delete curr;
 				} else {
 					last->next = nullptr;
 					delete curr;
 				}
 			}
-			cout << "feedback looping .... " << endl;
 			curr = curr->next;
 		}
 	}else {
 		cout << "List is empty" << endl;
-		//change to bool and return false here
 	}
 }
 

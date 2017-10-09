@@ -8,8 +8,6 @@
 
 using namespace std;
 
-
-
 //Construction
 FBLUser::FBLUser(){
 	userID = "defUID";

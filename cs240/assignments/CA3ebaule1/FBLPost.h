@@ -5,6 +5,8 @@
 #include <iostream>
 #include <string>
 
+using namespace std;
+
 class FBLPost
 {
 public:
@@ -15,12 +17,11 @@ public:
 
 	//Likes
 	int getNumLikes();
-	void setNumLikes();
-	void like();
+	void like(); //like++
 
 	//Content
 	string getContent();
-	void setContent();	
+	void setContent(string content);	
 
 	//Destruction
 	~FBLPost();

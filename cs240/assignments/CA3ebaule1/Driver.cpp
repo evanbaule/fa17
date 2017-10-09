@@ -46,6 +46,27 @@ int main(int argc, char const *argv[])
 		cout << "found : " << testingReader << " in list. " << endl;
 	}
 
+	FBLPost * p1 = new FBLPost();
+	p1->setContent("p1 content");
+	p1->like();
+	p1->like();
+	cout << "expected:: 2 likes p1 content : " << endl;
+	p1->printContent();
 
+	FBLPost * p2 = new FBLPost();
+	p2->setContent("p2 content");
+	p2->like();
+	p2->like();
+	p2->like();
+	p2->like();
+	cout << "expected:: 4 likes p2 content : " << endl;
+	p2->printContent();
+
+	cout << "LINKED LISTED NIGGA" << endl;
+	FBLPostLL * posts = new FBLPostLL();
+	posts->insert(p1);
+	posts->insert(p2);
+
+	posts->printLL();
 	
 }

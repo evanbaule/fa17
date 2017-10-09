@@ -1,17 +1,13 @@
-//Guard????? Caused errors by circular ref
-//References
+//Header
 #include <stdlib.h>
 #include <iostream>
 #include <string>
-
-//Header Import
 #include "FBLUser.h"
-
 using namespace std;
-
 class FBLUserLL
 {
 public:
+	//Node class
 	class FBLUserLLNode
 	{
 	public:
@@ -20,19 +16,13 @@ public:
 		FBLUser * data;
 		FBLUserLLNode * next;
 	};
-
-	//Construction
+	
 	FBLUserLL();
-
-	//Functionality
+	~FBLUserLL();
 	void insert(FBLUser * newUser);
 	bool findByUserID(string targetUserID);
-	//bool manageByUserID(string userID);
 	void remove(string userIDTBR);
 	void printLL();
-
-	//Destruction
-	~FBLUserLL();
 
 private:
 	FBLUserLLNode * first;
