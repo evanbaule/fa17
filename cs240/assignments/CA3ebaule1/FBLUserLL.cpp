@@ -37,7 +37,7 @@ void FBLUserLL::insert(FBLUser * newUser){
 	}
 }
 
-bool FBLUserLL::findByUserID(string targetUserID){
+bool FBLUserLL::searchUserID(string targetUserID){
 	FBLUserLLNode * curr = first;
 	while(curr){
 		if(curr->data->getUserID() == targetUserID){

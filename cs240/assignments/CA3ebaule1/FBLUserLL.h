@@ -20,7 +20,7 @@ public:
 	FBLUserLL();
 	~FBLUserLL();
 	void insert(FBLUser * newUser);
-	bool findByUserID(string targetUserID);
+	bool searchUserID(string targetUserID);
 	void remove(string userIDTBR);
 	void printLL();
 

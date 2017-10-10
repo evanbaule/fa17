@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include <istream>
 
 //Header Imports
 #include "FBLUser.h"
@@ -13,59 +14,50 @@ using namespace std;
 
 int main(int argc, char const *argv[])
 {
-
-	FBLUser * def = new FBLUser();
-
-	FBLUser * evan = new FBLUser();
-	evan->setUserID("ebaule1");
-	evan->setPassword("override");
-	evan->setLastName("Baule");
-	evan->setFirstName("Evan");
-
-	FBLUser * cris = new FBLUser();
-	cris->setUserID("cforno12");
-	cris->setPassword("password");
-	cris->setLastName("Forno");
-	cris->setFirstName("Cris");
-
+	cout << "Welcome to FaceBook Lite. ";
+	string inputCommandTop;
 	FBLUserLL * users = new FBLUserLL();
-	
-	users->insert(def);
-	users->insert(evan);
-	users->insert(cris);
 
-	users->printLL();
+	while(inputCommandTop != "QUIT")
+	{
+		cout << "Please enter a command: CREATE, LOGIN, or QUIT" << endl;
 
-	users->remove("cforno12");
+		if(inputCommandTop == "LOGIN"){
+			string userIdInput;
+			cout << "Enter your userID: " << endl;
+			cin >> userIdInput;
+			if(users->searchUserID(userIdInput)){
+				if(true){
+					string internalInputCommand;
+					while(internalInputCommand != "LOGOUT"){
+						cout << "Please enter a command: POST, READ, or LOGOUT." << endl;
+						cin >> internalInputCommand;
+						if(internalInputCommand == "POST"){
 
-	users->printLL();
+						}
+						else if(internalInputCommand == "READ"){
 
+						}
+						else if(internalInputCommand == "LOGOUT"){
+							break;
+						}
+						else {
+							cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
+						}
+					}
+				} else {
+					cout << "Login attempt failed... Returning to menu." << endl;
+				}
+			}
+		}else if(inputCommandTop == "CREATE") {
 
-	string testingReader = cris->getUserID();
-	if(users->findByUserID(testingReader)){
-		cout << "found : " << testingReader << " in list. " << endl;
+		}else if(inputCommandTop == "Help") {
+			cout << "Valid command options: Login, Add, Save, Load, Report, Help" << endl;
+		}else if(inputCommandTop == "QUIT"){
+			break;
+		}else {
+			cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
+		}
 	}
-
-	FBLPost * p1 = new FBLPost();
-	p1->setContent("p1 content");
-	p1->like();
-	p1->like();
-	cout << "expected:: 2 likes p1 content : " << endl;
-	p1->printContent();
-
-	FBLPost * p2 = new FBLPost();
-	p2->setContent("p2 content");
-	p2->like();
-	p2->like();
-	p2->like();
-	p2->like();
-	cout << "expected:: 4 likes p2 content : " << endl;
-	p2->printContent();
-
-	FBLPostLL * posts = new FBLPostLL();
-	posts->insert(p1);
-	posts->insert(p2);
-
-	posts->printLL();
-	
+	cout << "Exiting..." << endl;
 }

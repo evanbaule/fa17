@@ -5,6 +5,7 @@
 
 //Header import
 #include "FBLUser.h"
+#include "FBLPost.h"
 
 using namespace std;
 
@@ -15,6 +16,13 @@ FBLUser::FBLUser(){
 	lastName = "defLast";
 	firstName = "defFirst";
 	postList = new FBLPostLL();
+}
+
+FBLUser::FBLUser(string userID, string password, string firstName, string lastName){
+	this->userID = userID;
+	this->password = password;
+	this->firstName = firstName;
+	this->lastName = lastName;
 }
 
 bool FBLUser::post(string content){
@@ -55,6 +63,14 @@ string FBLUser::getFirstName(){
 }
 void FBLUser::setFirstName(string newFirstName){
 	firstName = newFirstName;
+}
+
+void FBLUser::addPost(FBLPost * newPost){
+	postList->insert(newPost);
+}
+
+void FBLUser::printPosts(){
+	postList->printLL();
 }
 
 

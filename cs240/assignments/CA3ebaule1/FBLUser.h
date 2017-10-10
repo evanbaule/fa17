@@ -14,6 +14,7 @@ class FBLUser
 public:
 	//Construction
 	FBLUser();
+	FBLUser(string userID, string password, string firstName, string lastName);
 
 	//Functionality
 	//void logout(); //maybe return from loop isntead of func
@@ -32,6 +33,8 @@ public:
 	string getFirstName();
 	void setFirstName(string newFirstName);
 
+	void addPost(FBLPost * newPost);
+	void printPosts();
 
 
 
