@@ -19,7 +19,7 @@ FBLUserLL::FBLUserLLNode::FBLUserLLNode(){
 }
 
 FBLUserLL::FBLUserLLNode::~FBLUserLLNode(){
-	
+	//Why?
 }
 
 void FBLUserLL::insert(FBLUser * newUser){
