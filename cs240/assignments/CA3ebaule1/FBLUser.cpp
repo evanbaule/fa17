@@ -18,11 +18,12 @@ FBLUser::FBLUser(){
 	postList = new FBLPostLL();
 }
 
-FBLUser::FBLUser(string userID, string password, string firstName, string lastName){
+FBLUser::FBLUser( string userID, string password, string firstName, string lastName ){
 	this->userID = userID;
 	this->password = password;
 	this->firstName = firstName;
 	this->lastName = lastName;
+	postList = new FBLPostLL();
 }
 
 bool FBLUser::post(string content){
@@ -65,14 +66,14 @@ void FBLUser::setFirstName(string newFirstName){
 	firstName = newFirstName;
 }
 
-void FBLUser::addPost(FBLPost * newPost){
+void FBLUser::addPost(string content){
+	FBLPost * newPost = new FBLPost(content);
 	postList->insert(newPost);
 }
 
 void FBLUser::printPosts(){
 	postList->printLL();
 }
-
 
 //Destruction
 FBLUser::~FBLUser(){

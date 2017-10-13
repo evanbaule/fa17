@@ -14,11 +14,12 @@ FBLPost::FBLPost(){
 	content = "defContent";
 }
 
-/*
-FBLPost::FBLPost(string content){
 
+FBLPost::FBLPost(string content){
+	numLikes = 0;
+	this->content = content;
 } 
-*/
+
 
 int FBLPost::getNumLikes(){
 	return numLikes;

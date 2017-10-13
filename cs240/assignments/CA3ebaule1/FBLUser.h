@@ -17,7 +17,6 @@ public:
 	FBLUser(string userID, string password, string firstName, string lastName);
 
 	//Functionality
-	//void logout(); //maybe return from loop isntead of func
 	bool post(string content);
 	void read();
 
@@ -33,10 +32,8 @@ public:
 	string getFirstName();
 	void setFirstName(string newFirstName);
 
-	void addPost(FBLPost * newPost);
+	void addPost(string content);
 	void printPosts();
-
-
 
 	//Destruction
 	~FBLUser();

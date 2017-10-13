@@ -17,8 +17,11 @@ public:
 		FBLUserLLNode * next;
 	};
 	
+	FBLUser * activeUser;	
+
 	FBLUserLL();
 	~FBLUserLL();
+	bool login(string userID);
 	void insert(FBLUser * newUser);
 	bool searchUserID(string targetUserID);
 	void remove(string userIDTBR);
@@ -26,5 +29,4 @@ public:
 
 private:
 	FBLUserLLNode * first;
-		
 };

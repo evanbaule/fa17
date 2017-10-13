@@ -12,6 +12,7 @@ class FBLPost
 public:
 	//Construction
 	FBLPost();
+	FBLPost(string content);
 
 	void printContent();
 

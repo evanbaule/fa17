@@ -11,6 +11,7 @@ using namespace std;
 
 FBLUserLL::FBLUserLL(){
 	first = nullptr;
+	activeUser = nullptr;
 }
 
 FBLUserLL::FBLUserLLNode::FBLUserLLNode(){
@@ -19,7 +20,7 @@ FBLUserLL::FBLUserLLNode::FBLUserLLNode(){
 }
 
 FBLUserLL::FBLUserLLNode::~FBLUserLLNode(){
-	//Why?
+	//Why??
 }
 
 void FBLUserLL::insert(FBLUser * newUser){
@@ -46,6 +47,32 @@ bool FBLUserLL::searchUserID(string targetUserID){
 		curr = curr->next;
 	}
 	return false;
+}
+
+bool FBLUserLL::login(string userID){
+	if(searchUserID(userID)){
+		cout << "Please enter your password: " << endl;
+		string pwbuffer;
+		cin >> pwbuffer;
+		FBLUserLLNode * curr = first;
+		while(curr){
+			if(curr->data->getUserID() == userID){
+				if( curr->data->getPassword() == pwbuffer ){
+					cout << "Logging in..." << endl;
+					cout << "Welcome : " << curr->data->getFirstName() << " " << curr->data->getLastName() << endl;
+					activeUser = curr->data;
+					return true;
+				} else {
+				cout << "Invalid credentials... Please re-select LOGIN to try again." << endl;
+				}
+			}
+			curr = curr->next;
+		}
+		return false;
+	} else {
+		cout << "User not found in database..." << endl;
+		return false;
+	}
 }
 
 void FBLUserLL::remove(string userIDTBR){
