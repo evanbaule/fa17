@@ -67,7 +67,7 @@ void FBLUser::setFirstName(string newFirstName){
 }
 
 void FBLUser::addPost(string content){
-	FBLPost * newPost = new FBLPost(content);
+	FBLPost * newPost = new FBLPost(content, this);
 	postList->insert(newPost);
 }
 

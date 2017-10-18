@@ -5,7 +5,9 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+
 #include "FBLPost.h"
+
 using namespace std;
 class FBLPostLL
 {
@@ -29,7 +31,6 @@ public:
 	
 private:
 	FBLPostLLNode * first;
-
 };
 
 #endif

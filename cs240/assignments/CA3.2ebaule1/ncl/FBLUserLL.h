@@ -21,7 +21,7 @@ public:
 		FBLUserLLNode * next;
 	};
 	
-	FBLUser * activeUser;	
+	FBLUser * activeUser;
 
 	FBLUserLL();
 	~FBLUserLL();

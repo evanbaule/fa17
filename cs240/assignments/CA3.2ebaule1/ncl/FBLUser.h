@@ -46,9 +46,6 @@ private:
 	string firstName;
 
 	FBLPostLL * postList;
-
-	//Friends
-	//FBLUserLL * friendsList;
 };
 
 #endif
