@@ -6,8 +6,6 @@
 #include <iostream>
 #include <string>
 
-#include "FBLUser.h"
-
 using namespace std;
 
 class FBLPost
@@ -16,7 +14,7 @@ public:
 	//Construction
 	FBLPost();
 	FBLPost(string content);
-	FBLPost(string content, FBLUser * poster);
+	FBLPost(string content, string poster);
 	
 	//Likes
 	int getNumLikes();
@@ -26,8 +24,8 @@ public:
 	string getContent();
 	void setContent(string content);
 
-	FBLUser getPoster();
-	void setPoster(FBLUser * poster);	
+	string getPoster();
+	void setPoster(string poster);	
 
 	void printContent();
 
@@ -35,7 +33,7 @@ public:
 	~FBLPost();
 
 private:
-	FBLUser * poster;
+	string poster;
 	string content;
 	int numLikes;
 };

@@ -11,8 +11,7 @@ using namespace std;
 //Construction 
 FBLPost::FBLPost(){
 	numLikes = 0;
-	content = "defContent";
-	poster = nullptr;
+	poster = "";
 }
 
 FBLPost::FBLPost(string content){
@@ -20,7 +19,7 @@ FBLPost::FBLPost(string content){
 	this->content = content;
 } 
 
-FBLPost::FBLPost(string content, FBLUser poster){
+FBLPost::FBLPost(string content, string poster){
 	numLikes = 0;
 	this->poster = poster;
 	this->content = content;
@@ -52,7 +51,7 @@ void FBLPost::setPoster(string poster){
 }
 
 void FBLPost::printContent(){
-	cout << poster->getData()->getFirstName() << " " << poster->getData()->getLastName() <<" posted : " << content << " ( " << numLikes << " ) " << endl;
+	cout << poster <<" posted : " << content << " ( " << numLikes << " ) " << endl;
 }
 
 

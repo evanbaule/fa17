@@ -16,6 +16,8 @@ int main(int argc, char const *argv[])
 {
 	cout << "Welcome to FaceBook Lite. ";
 	string inputCommandTop;
+
+	FBLPostLL * globalFeed = new FBLPostLL();
 	FBLUserLL * users = new FBLUserLL();
 
 	while(inputCommandTop != "QUIT")
@@ -35,6 +37,10 @@ int main(int argc, char const *argv[])
 					if(internalInputCommand == "POST"){
 						string postbuf;
 						getline(cin, postbuf);
+						//will clean this next part up later, probably spending the night refactoring
+						string userBuffer = users->activeUser->getFirstName() + " " + users->activeUser->getLastName();
+						FBLPost * globalPost = new FBLPost(postbuf, userBuffer);
+						globalFeed->insert(globalPost);
 						users->activeUser->addPost(postbuf);
 						cout << "Added post" << endl;
 					}
@@ -71,7 +77,10 @@ int main(int argc, char const *argv[])
 			cout << "Valid command options: [LOGIN, CREATE, QUIT]" << endl;
 		}else if(inputCommandTop == "QUIT"){
 			break;
-		}else {
+		}
+		else if(inputCommandTop == "FEED"){
+			globalFeed->printLL();
+		} else {
 			cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 			cin.clear();
 			cin.ignore(10000, '\n');

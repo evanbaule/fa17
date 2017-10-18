@@ -26,6 +26,7 @@ run:
 
 #Cat | input files to check cases
 test:
+	cat tests/test.txt | bin/drive
 
 #Reformat file structure, copy, and compress files for submission
 submit:

@@ -12,10 +12,30 @@ POST post 1
 POST post 2
 POST post 3
 POST post 4
-READ
-READ
-READ
-READ
-READ
 LOGOUT
+LOGIN
+cforno12
+password
+POST post 1 x
+POST post 2 x
+POST post 3 x
+POST post 4 x
+LOGOUT
+LOGIN
+mlewis
+password
+POST post 1 m
+POST post 2 m
+POST post 3 m
+POST post 4 m
+LOGOUT
+LOGIN
+ebaule1
+password
+POST post 1 XD
+POST post 2 XD
+POST post 3 XD
+POST post 4 XD
+LOGOUT
+FEED
 QUIT

@@ -11,10 +11,10 @@ using namespace std;
 
 //Construction
 FBLUser::FBLUser(){
-	userID = "defUID";
-	password = "defPass";
-	lastName = "defLast";
-	firstName = "defFirst";
+	userID = "";
+	password = "";
+	lastName = "";
+	firstName = "";
 	postList = new FBLPostLL();
 }
 
@@ -67,7 +67,8 @@ void FBLUser::setFirstName(string newFirstName){
 }
 
 void FBLUser::addPost(string content){
-	FBLPost * newPost = new FBLPost(content, this);
+	string fullName = lastName + " " + firstName;
+	FBLPost * newPost = new FBLPost(content, fullName);
 	postList->insert(newPost);
 }
 
