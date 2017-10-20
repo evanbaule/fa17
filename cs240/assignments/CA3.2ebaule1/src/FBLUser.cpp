@@ -79,7 +79,7 @@ void FBLUser::printPosts(){
 
 void FBLUser::addFriend(FBLUser newFriend){
 	if(friendsList->size() == 1){
-		friendsList->at(1) = newFriend;
+		friendsList->at(0) = newFriend;
 	}else {
 		friendsList->push_back(newFriend);
 	}

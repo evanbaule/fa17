@@ -75,6 +75,7 @@ bool FBLUserLL::login(string userID){
 	}
 }
 
+//searchByUserID should do this
 FBLUser FBLUserLL::returnUserWithID(string userID){
 	FBLUserLLNode * curr = first;
 	while(curr){
@@ -84,6 +85,8 @@ FBLUser FBLUserLL::returnUserWithID(string userID){
 		}
 		curr = curr->next;
 	}
+	FBLUser neverReturnMe = FBLUser();
+	return neverReturnMe;
 }
 
 void FBLUserLL::remove(string userIDTBR){
