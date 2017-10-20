@@ -67,13 +67,24 @@ void FBLUser::setFirstName(string newFirstName){
 }
 
 void FBLUser::addPost(string content){
-	string fullName = lastName + " " + firstName;
-	FBLPost * newPost = new FBLPost(content, fullName);
+	FBLPost * newPost = new FBLPost(content, userID);
 	postList->insert(newPost);
+
 }
 
 void FBLUser::printPosts(){
 	postList->printLL();
+}
+
+void FBLUser::addFriend(FBLUser newFriend){
+	friendsList->push_back(newFriend);
+}
+
+void FBLUser::printFriendsList(){
+	for (int i = 0; i < friendsList->size(); ++i)
+	{
+		cout << friendsList->at(i).getUserID() << endl;
+	}
 }
 
 //Destruction

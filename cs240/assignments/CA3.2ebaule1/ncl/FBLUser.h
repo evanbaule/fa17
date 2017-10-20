@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include <vector>
 
 #include "FBLPostLL.h"
 
@@ -20,6 +21,9 @@ public:
 	//Functionality
 	bool post(string content);
 	void read();
+
+	void addFriend(FBLUser newFriend);
+	void printFriendsList();
 
 	string getUserID();
 	void setUserID(string newUserID);
@@ -46,6 +50,7 @@ private:
 	string firstName;
 
 	FBLPostLL * postList;
+	vector<FBLUser>* friendsList;
 };
 
 #endif

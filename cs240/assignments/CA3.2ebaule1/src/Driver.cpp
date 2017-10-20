@@ -37,8 +37,7 @@ int main(int argc, char const *argv[])
 					if(internalInputCommand == "POST"){
 						string postbuf;
 						getline(cin, postbuf);
-						//will clean this next part up later, probably spending the night refactoring
-						string userBuffer = users->activeUser->getFirstName() + " " + users->activeUser->getLastName();
+						string userBuffer = users->activeUser->getUserID();
 						FBLPost * globalPost = new FBLPost(postbuf, userBuffer);
 						globalFeed->insert(globalPost);
 						users->activeUser->addPost(postbuf);
@@ -46,6 +45,21 @@ int main(int argc, char const *argv[])
 					}
 					else if(internalInputCommand == "READ"){
 						users->activeUser->printPosts();
+					}
+					else if(internalInputCommand == "FRIEND"){
+						string newFriendID;  
+						cin >> newFriendID;
+						FBLUser newFriend = users->returnUserWithID(newFriendID);
+						if(users->searchUserID(newFriendID)){
+							users->activeUser->addFriend(newFriend);
+							cout << newFriendID << " added to friends list." << endl;
+						}else {
+							cout << "No user with id: " << newFriendID << " found in user base. Returning to menu." << endl;
+						}
+						
+					}
+					else if(internalInputCommand == "FRIENDSLIST"){
+						users->activeUser->printFriendsList();
 					}
 					else if(internalInputCommand == "LOGOUT"){
 						break;

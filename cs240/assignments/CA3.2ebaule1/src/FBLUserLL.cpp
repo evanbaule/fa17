@@ -75,6 +75,16 @@ bool FBLUserLL::login(string userID){
 	}
 }
 
+FBLUser FBLUserLL::returnUserWithID(string userID){
+	FBLUserLLNode curr = first;
+	while(curr){
+		if(curr.data.getUserID() == targetUserID){
+			return curr.data;
+		}
+		curr = curr.next;
+	}
+}
+
 void FBLUserLL::remove(string userIDTBR){
 	if(first){
 		FBLUserLLNode * curr = first;
