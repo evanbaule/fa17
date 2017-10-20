@@ -76,12 +76,13 @@ bool FBLUserLL::login(string userID){
 }
 
 FBLUser FBLUserLL::returnUserWithID(string userID){
-	FBLUserLLNode curr = first;
+	FBLUserLLNode * curr = first;
 	while(curr){
-		if(curr.data.getUserID() == targetUserID){
-			return curr.data;
+		if(curr->data->getUserID() == userID){
+			FBLUser ret = * curr->data;
+			return ret;
 		}
-		curr = curr.next;
+		curr = curr->next;
 	}
 }
 

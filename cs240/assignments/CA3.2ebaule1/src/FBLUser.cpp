@@ -16,6 +16,7 @@ FBLUser::FBLUser(){
 	lastName = "";
 	firstName = "";
 	postList = new FBLPostLL();
+	friendsList = new vector<FBLUser>(1);
 }
 
 FBLUser::FBLUser( string userID, string password, string firstName, string lastName ){
@@ -77,7 +78,11 @@ void FBLUser::printPosts(){
 }
 
 void FBLUser::addFriend(FBLUser newFriend){
-	friendsList->push_back(newFriend);
+	if(friendsList->size() == 1){
+		friendsList->at(1) = newFriend;
+	}else {
+		friendsList->push_back(newFriend);
+	}
 }
 
 void FBLUser::printFriendsList(){
