@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 			if(users->login(userIdInput)){
 				string internalInputCommand;
 				while(internalInputCommand != "LOGOUT"){
-					cout << "Please enter a command: [POST, READ, or LOGOUT]" << endl;
+					cout << "Please enter a command: [POST, FRIEND, READ, or LOGOUT]" << endl;
 					cin >> internalInputCommand;
 					if(internalInputCommand == "POST"){
 						string postbuf;

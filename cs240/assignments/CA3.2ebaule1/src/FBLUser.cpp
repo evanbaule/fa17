@@ -16,7 +16,7 @@ FBLUser::FBLUser(){
 	lastName = "";
 	firstName = "";
 	postList = new FBLPostLL();
-	friendsList = new vector<FBLUser>(1);
+	friendsList->reserve(1); //supposedly the best way to do this
 }
 
 FBLUser::FBLUser( string userID, string password, string firstName, string lastName ){
