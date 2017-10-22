@@ -76,16 +76,16 @@ bool FBLUserLL::login(string userID){
 }
 
 //searchByUserID should do this
-FBLUser FBLUserLL::returnUserWithID(string userID){
+FBLUser * FBLUserLL::returnUserWithID(string userID){
 	FBLUserLLNode * curr = first;
 	while(curr){
 		if(curr->data->getUserID() == userID){
-			FBLUser ret = * curr->data;
+			FBLUser * ret =  curr->data;
 			return ret;
 		}
 		curr = curr->next;
 	}
-	FBLUser neverReturnMe = FBLUser();
+	FBLUser * neverReturnMe = new FBLUser();
 	return neverReturnMe;
 }
 

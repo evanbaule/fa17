@@ -19,7 +19,6 @@ public:
 	FBLUser(string userID, string password, string firstName, string lastName);
 
 	//Functionality
-	bool post(string content);
 	void read();
 
 	void addFriend(FBLUser * newFriend);
@@ -39,6 +38,8 @@ public:
 
 	void addPost(string content);
 	void printPosts();
+	FBLPostLL * getFeed();
+	void printFeed();
 
 	//Destruction
 	~FBLUser();
@@ -49,7 +50,8 @@ private:
 	string lastName;
 	string firstName;
 
-	FBLPostLL * postList;
+	FBLPostLL * myPosts;
+	FBLPostLL * myFeed;
 	vector<FBLUser*> friendsList;
 };
 

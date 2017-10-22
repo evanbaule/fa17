@@ -15,7 +15,8 @@ FBLUser::FBLUser(){
 	password = "";
 	lastName = "";
 	firstName = "";
-	postList = new FBLPostLL();
+	myPosts = new FBLPostLL();
+	myFeed = new FBLPostLL();
 }
 
 FBLUser::FBLUser( string userID, string password, string firstName, string lastName ){
@@ -23,11 +24,9 @@ FBLUser::FBLUser( string userID, string password, string firstName, string lastN
 	this->password = password;
 	this->firstName = firstName;
 	this->lastName = lastName;
-	postList = new FBLPostLL();
-}
+	myPosts = new FBLPostLL();
+	myFeed = new FBLPostLL();
 
-bool FBLUser::post(string content){
-	return true;
 }
 
 void FBLUser::read(){
@@ -68,23 +67,40 @@ void FBLUser::setFirstName(string newFirstName){
 
 void FBLUser::addPost(string content){
 	FBLPost * newPost = new FBLPost(content, userID);
-	postList->insert(newPost);
+	myPosts->insert(newPost);
+	myFeed->insert(newPost);
+	for (int i = 0; i < friendsList.size(); i++)
+	{
+		friendsList.at(i)->getFeed()->insert(newPost);
+		cout << "Added post " << newPost->getContent() << " to list of " << friendsList.at(i)->getUserID() << endl;
+	}
+}
 
+FBLPostLL * FBLUser::getFeed(){
+	return myFeed;
+}
+
+void FBLUser::printFeed(){
+	cout << "---- YOUR FEED ----" << endl;
+	myFeed->printLL();
+	cout << "---- END ----" << endl;
 }
 
 void FBLUser::printPosts(){
-	postList->printLL();
+	myPosts->printLL();
 }
 
 void FBLUser::addFriend(FBLUser * newFriend){
-	friendsList->push_back(newFriend);
+	friendsList.push_back(newFriend);
 }
 
 void FBLUser::printFriendsList(){
-	for (int i = 0; i < friendsList->size(); ++i)
+	cout << "---- YOUR FRIENDS LIST ----" << endl;
+	for (int i = 0; i < friendsList.size(); ++i)
 	{
-		cout << friendsList->at(i).getUserID() << endl;
+		cout << "- " << friendsList.at(i)->getUserID() << endl;
 	}
+	cout << "---- END ----" << endl;
 }
 
 //Destruction

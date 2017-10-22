@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
 			if(users->login(userIdInput)){
 				string internalInputCommand;
 				while(internalInputCommand != "LOGOUT"){
-					cout << "Please enter a command: [POST, FRIEND, READ, or LOGOUT]" << endl;
+					cout << "Please enter a command: [POST, MYFRIENDS, MYFEED, READ, or LOGOUT]" << endl;
 					cin >> internalInputCommand;
 					if(internalInputCommand == "POST"){
 						string postbuf;
@@ -49,17 +49,20 @@ int main(int argc, char const *argv[])
 					else if(internalInputCommand == "FRIEND"){
 						string newFriendID;  
 						cin >> newFriendID;
-						FBLUser newFriend = users->returnUserWithID(newFriendID);
+						FBLUser * newFriend = users->returnUserWithID(newFriendID);
 						if(users->searchUserID(newFriendID)){
 							users->activeUser->addFriend(newFriend);
-							cout << newFriendID << " added to friends list." << endl;
+							cout << newFriendID << " added as a friend." << endl;
 						}else {
 							cout << "No user with id: " << newFriendID << " found in user base. Returning to menu." << endl;
 						}
 						
 					}
-					else if(internalInputCommand == "FRIENDSLIST"){
+					else if(internalInputCommand == "MYFRIENDS"){
 						users->activeUser->printFriendsList();
+					}
+					else if(internalInputCommand == "MYFEED"){
+						users->activeUser->printFeed();
 					}
 					else if(internalInputCommand == "LOGOUT"){
 						break;

@@ -25,7 +25,7 @@ public:
 
 	FBLUserLL();
 	~FBLUserLL();
-	FBLUser returnUserWithID(string userID);
+	FBLUser * returnUserWithID(string userID);
 	bool login(string userID);
 	void insert(FBLUser * newUser);
 	bool searchUserID(string targetUserID);
