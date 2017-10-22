@@ -22,7 +22,7 @@ public:
 	bool post(string content);
 	void read();
 
-	void addFriend(FBLUser newFriend);
+	void addFriend(FBLUser * newFriend);
 	void printFriendsList();
 
 	string getUserID();
@@ -50,7 +50,7 @@ private:
 	string firstName;
 
 	FBLPostLL * postList;
-	vector<FBLUser>* friendsList;
+	vector<FBLUser*> friendsList;
 };
 
 #endif

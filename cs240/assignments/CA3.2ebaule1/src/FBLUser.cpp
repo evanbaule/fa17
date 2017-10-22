@@ -16,7 +16,6 @@ FBLUser::FBLUser(){
 	lastName = "";
 	firstName = "";
 	postList = new FBLPostLL();
-	friendsList->reserve(1); //supposedly the best way to do this
 }
 
 FBLUser::FBLUser( string userID, string password, string firstName, string lastName ){
@@ -77,12 +76,8 @@ void FBLUser::printPosts(){
 	postList->printLL();
 }
 
-void FBLUser::addFriend(FBLUser newFriend){
-	if(friendsList->size() == 1){
-		friendsList->at(0) = newFriend;
-	}else {
-		friendsList->push_back(newFriend);
-	}
+void FBLUser::addFriend(FBLUser * newFriend){
+	friendsList->push_back(newFriend);
 }
 
 void FBLUser::printFriendsList(){
