@@ -54,7 +54,6 @@ int main(int argc, char const *argv[])
 							} else {
 								cout << "You are already friends with " << newFriendID << endl;
 							}
-							
 						}else {
 							cout << "No user with id (" << newFriendID << ") found in user base. Returning to menu." << endl;
 						}
@@ -93,9 +92,9 @@ int main(int argc, char const *argv[])
 
 		}else if(inputCommandTop == "HELP") {
 			cout << "Valid command options: [LOGIN, CREATE, QUIT]" << endl;
-		}else if(inputCommandTop == "QUIT"){
+		}else if(inputCommandTop == "QUIT") {
 			break;
-		} else {
+		}else {
 			cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 			cin.clear();
 			cin.ignore(10000, '\n');
