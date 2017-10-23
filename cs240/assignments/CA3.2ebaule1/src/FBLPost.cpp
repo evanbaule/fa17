@@ -51,7 +51,7 @@ void FBLPost::setPoster(string poster){
 }
 
 void FBLPost::printContent(){
-	cout << poster <<" posted : " << content << " ( " << numLikes << " ) " << endl;
+	cout <<"|" << "\t" << "- " << poster << "\t posted : " << "( " << numLikes << " ) " << content << endl;
 }
 
 

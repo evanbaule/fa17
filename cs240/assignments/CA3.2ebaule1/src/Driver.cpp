@@ -30,12 +30,11 @@ int main(int argc, char const *argv[])
 			if(users->login(userIdInput)){
 				string internalInputCommand;
 				while(internalInputCommand != "LOGOUT"){
-					cout << "Please enter a command: [POST, MYFRIENDS, MYFEED, READ, or LOGOUT]" << endl;
+					cout << "Please enter a command: [FRIEND, MYFRIENDS, MYFEED, POST, READ, or LOGOUT]" << endl;
 					cin >> internalInputCommand;
 					if(internalInputCommand == "POST"){
 						string postbuf;
 						getline(cin, postbuf);
-						string userBuffer = users->activeUser->getUserID();
 						users->activeUser->addPost(postbuf);
 					}
 					else if(internalInputCommand == "READ"){
@@ -49,15 +48,15 @@ int main(int argc, char const *argv[])
 							if(!users->activeUser->alreadyFriends(newFriendID)){
 								users->activeUser->addFriend(newFriend);
 								newFriend->addFriend(users->activeUser);
-								cout << newFriendID << " added as a friend of " << users->activeUser->getUserID() << endl;
-								cout << users->activeUser->getUserID() << " added as a friend of " << newFriendID << endl;
-								cout << "Success..." << endl;
+								//cout << newFriendID << " added as a friend of " << users->activeUser->getUserID() << endl;
+								//cout << users->activeUser->getUserID() << " added as a friend of " << newFriendID << endl;
+								cout << newFriendID << " added as a friend." << endl;
 							} else {
 								cout << "You are already friends with " << newFriendID << endl;
 							}
 							
 						}else {
-							cout << "No user with id: " << newFriendID << " found in user base. Returning to menu." << endl;
+							cout << "No user with id (" << newFriendID << ") found in user base. Returning to menu." << endl;
 						}
 					}
 					else if(internalInputCommand == "MYFRIENDS"){

@@ -66,13 +66,14 @@ void FBLUser::setFirstName(string newFirstName){
 }
 
 void FBLUser::addPost(string content){
-	FBLPost * newPost = new FBLPost(content, userID);
+	string postNameBuffer = firstName + " " + lastName;
+	FBLPost * newPost = new FBLPost(content, postNameBuffer);
 	myPosts->insert(newPost);
 	myFeed->insert(newPost);
 	for (int i = 0; i < friendsList.size(); i++)
 	{
 		friendsList.at(i)->getFeed()->insert(newPost);
-		cout << "Added post " << newPost->getContent() << " to list of " << friendsList.at(i)->getUserID() << endl;
+		//cout << "Added post " << newPost->getContent() << " to list of " << friendsList.at(i)->getUserID() << endl;
 	}
 }
 
@@ -81,9 +82,9 @@ FBLPostLL * FBLUser::getFeed(){
 }
 
 void FBLUser::printFeed(){
-	cout << "---- YOUR FEED ----" << endl;
+	cout << "YOUR FEED:" << endl << "-------------------------------------------------------" << endl;
 	myFeed->printLLNoDelete();
-	cout << "---- END ----" << endl;
+	cout << "-------------------------------------------------------" << endl;
 }
 
 void FBLUser::printPosts(){
@@ -105,12 +106,12 @@ void FBLUser::addFriend(FBLUser * newFriend){
 }
 
 void FBLUser::printFriendsList(){
-	cout << " YOUR FRIENDS LIST:" << endl << "--------------------" << endl;
+	cout << "YOUR FRIENDS LIST:" << endl << "-------------------------------------------------------" << endl;
 	for (int i = 0; i < friendsList.size(); ++i)
 	{
-		cout << "| - " << friendsList.at(i)->getUserID() << endl;
+		cout << "|" << "\t" << "- " << friendsList.at(i)->getFirstName() << " " << friendsList.at(i)->getLastName() << endl;
 	}
-	cout << "--------------------" << endl;
+	cout << "-------------------------------------------------------" << endl;
 }
 
 //Destruction
