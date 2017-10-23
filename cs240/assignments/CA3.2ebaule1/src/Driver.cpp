@@ -16,8 +16,6 @@ int main(int argc, char const *argv[])
 {
 	cout << "Welcome to FaceBook Lite. ";
 	string inputCommandTop;
-
-	FBLPostLL * globalFeed = new FBLPostLL();
 	FBLUserLL * users = new FBLUserLL();
 
 	while(inputCommandTop != "QUIT")
@@ -38,10 +36,7 @@ int main(int argc, char const *argv[])
 						string postbuf;
 						getline(cin, postbuf);
 						string userBuffer = users->activeUser->getUserID();
-						FBLPost * globalPost = new FBLPost(postbuf, userBuffer);
-						globalFeed->insert(globalPost);
 						users->activeUser->addPost(postbuf);
-						cout << "Added post" << endl;
 					}
 					else if(internalInputCommand == "READ"){
 						users->activeUser->printPosts();
@@ -51,12 +46,19 @@ int main(int argc, char const *argv[])
 						cin >> newFriendID;
 						FBLUser * newFriend = users->returnUserWithID(newFriendID);
 						if(users->searchUserID(newFriendID)){
-							users->activeUser->addFriend(newFriend);
-							cout << newFriendID << " added as a friend." << endl;
+							if(!users->activeUser->alreadyFriends(newFriendID)){
+								users->activeUser->addFriend(newFriend);
+								newFriend->addFriend(users->activeUser);
+								cout << newFriendID << " added as a friend of " << users->activeUser->getUserID() << endl;
+								cout << users->activeUser->getUserID() << " added as a friend of " << newFriendID << endl;
+								cout << "Success..." << endl;
+							} else {
+								cout << "You are already friends with " << newFriendID << endl;
+							}
+							
 						}else {
 							cout << "No user with id: " << newFriendID << " found in user base. Returning to menu." << endl;
 						}
-						
 					}
 					else if(internalInputCommand == "MYFRIENDS"){
 						users->activeUser->printFriendsList();
@@ -94,9 +96,6 @@ int main(int argc, char const *argv[])
 			cout << "Valid command options: [LOGIN, CREATE, QUIT]" << endl;
 		}else if(inputCommandTop == "QUIT"){
 			break;
-		}
-		else if(inputCommandTop == "FEED"){
-			globalFeed->printLL();
 		} else {
 			cout << "Invalid input. Type \"Help\" for a list of valid commands." << endl;
 			cin.clear();

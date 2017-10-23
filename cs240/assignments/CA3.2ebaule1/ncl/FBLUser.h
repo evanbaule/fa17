@@ -23,6 +23,7 @@ public:
 
 	void addFriend(FBLUser * newFriend);
 	void printFriendsList();
+	bool alreadyFriends(string userID);
 
 	string getUserID();
 	void setUserID(string newUserID);

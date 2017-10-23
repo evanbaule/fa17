@@ -82,12 +82,22 @@ FBLPostLL * FBLUser::getFeed(){
 
 void FBLUser::printFeed(){
 	cout << "---- YOUR FEED ----" << endl;
-	myFeed->printLL();
+	myFeed->printLLNoDelete();
 	cout << "---- END ----" << endl;
 }
 
 void FBLUser::printPosts(){
-	myPosts->printLL();
+	myPosts->printLLWithDelete();
+}
+
+bool FBLUser::alreadyFriends(string userID){
+	for (int i = 0; i < friendsList.size(); ++i)
+	{
+		if(friendsList.at(i)->getUserID() == userID){
+			return true;
+		}
+	}
+	return false;
 }
 
 void FBLUser::addFriend(FBLUser * newFriend){
@@ -95,12 +105,12 @@ void FBLUser::addFriend(FBLUser * newFriend){
 }
 
 void FBLUser::printFriendsList(){
-	cout << "---- YOUR FRIENDS LIST ----" << endl;
+	cout << " YOUR FRIENDS LIST:" << endl << "--------------------" << endl;
 	for (int i = 0; i < friendsList.size(); ++i)
 	{
-		cout << "- " << friendsList.at(i)->getUserID() << endl;
+		cout << "| - " << friendsList.at(i)->getUserID() << endl;
 	}
-	cout << "---- END ----" << endl;
+	cout << "--------------------" << endl;
 }
 
 //Destruction

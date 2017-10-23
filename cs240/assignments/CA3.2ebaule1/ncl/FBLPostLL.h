@@ -27,7 +27,8 @@ public:
 	~FBLPostLL();
 	
 	void insert(FBLPost * newPost);
-	void printLL();
+	void printLLWithDelete();
+	void printLLNoDelete();
 	
 private:
 	FBLPostLLNode * first;

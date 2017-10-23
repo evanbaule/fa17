@@ -35,7 +35,7 @@ void FBLPostLL::insert(FBLPost * newPost){
 	}
 }
 
-void FBLPostLL::printLL(){
+void FBLPostLL::printLLWithDelete(){
 	FBLPostLLNode * curr = first;
 	while(curr){
 		curr->data->printContent();
@@ -55,6 +55,20 @@ void FBLPostLL::printLL(){
 		cout << "No posts to read from... " << endl;
 	}
 	
+}
+
+
+void FBLPostLL::printLLNoDelete(){
+	if(first){
+		FBLPostLLNode * curr = first;
+		while(curr){
+			curr->data->printContent();
+			curr = curr->next;
+		}	
+	}
+	else {
+		cout << "No posts to read from... " << endl;
+	}
 }
 
 
