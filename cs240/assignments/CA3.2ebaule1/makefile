@@ -28,5 +28,8 @@ run:
 test:
 	cat test.txt | ./CA3
 
+test2:
+	cat test2.txt | ./CA3
+
 #Reformat file structure, copy, and compress files for submission
 submit:
