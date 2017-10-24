@@ -53,6 +53,23 @@ void FBLPostLL::printLLWithDelete(){
 	
 }
 
+void FBLPostLL::printLLFirstWithDelete(){
+	if(first){
+		if(first->next){
+			first->data->printContent();
+			FBLPostLLNode * temp = first;
+			delete first;
+			first = temp->next;
+		} else {
+			first->data->printContent();
+			delete first;
+			first = nullptr;
+		}
+	} else {
+		cout << "No posts to read from... " << endl;
+	}
+}
+
 
 void FBLPostLL::printLLNoDelete(){
 	if(first){

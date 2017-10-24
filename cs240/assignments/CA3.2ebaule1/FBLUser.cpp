@@ -88,8 +88,8 @@ void FBLUser::printFeed(){
 }
 
 void FBLUser::readFeed(){
-	cout << "YOUR FEED:" << endl << "-------------------------------------------------------" << endl;
-	myFeed->printLLWithDelete();
+	cout << "NEWEST POST:" << endl << "-------------------------------------------------------" << endl;
+	myFeed->printLLFirstWithDelete();
 	cout << "-------------------------------------------------------" << endl;
 }
 

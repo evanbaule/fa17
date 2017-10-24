@@ -27,6 +27,7 @@ public:
 	
 	void insert(FBLPost * newPost);
 	void printLLWithDelete();
+	void printLLFirstWithDelete();
 	void printLLNoDelete();
 	
 private:
