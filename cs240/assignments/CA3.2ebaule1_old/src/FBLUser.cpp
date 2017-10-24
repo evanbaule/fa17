@@ -17,6 +17,7 @@ FBLUser::FBLUser(){
 	firstName = "";
 	myPosts = new FBLPostLL();
 	myFeed = new FBLPostLL();
+	myWall = new FBLPostLL();
 }
 
 FBLUser::FBLUser( string userID, string password, string firstName, string lastName ){
@@ -24,9 +25,8 @@ FBLUser::FBLUser( string userID, string password, string firstName, string lastN
 	this->password = password;
 	this->firstName = firstName;
 	this->lastName = lastName;
-	myPosts = new FBLPostLL();
+	myPosts = new FBLPostLL(); //MYWALL
 	myFeed = new FBLPostLL();
-
 }
 
 void FBLUser::read(){
@@ -87,8 +87,16 @@ void FBLUser::printFeed(){
 	cout << "-------------------------------------------------------" << endl;
 }
 
+void FBLUser::readFeed(){
+	cout << "YOUR FEED:" << endl << "-------------------------------------------------------" << endl;
+	myFeed->printLLWithDelete();
+	cout << "-------------------------------------------------------" << endl;
+}
+
 void FBLUser::printPosts(){
-	myPosts->printLLWithDelete();
+	cout << firstName << " " << lastName << "'s WALL':" << endl << "-------------------------------------------------------" << endl;
+	myPosts->printLLNoDelete();
+	cout << "-------------------------------------------------------" << endl;
 }
 
 bool FBLUser::alreadyFriends(string userID){

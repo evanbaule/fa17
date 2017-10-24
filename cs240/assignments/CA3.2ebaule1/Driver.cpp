@@ -5,10 +5,10 @@
 #include <istream>
 
 //Header Imports
-#include "../ncl/FBLUser.h"
-#include "../ncl/FBLUserLL.h"
-#include "../ncl/FBLPost.h"
-#include "../ncl/FBLPostLL.h"
+#include "FBLUser.h"
+#include "FBLUserLL.h"
+#include "FBLPost.h"
+#include "FBLPostLL.h"
 
 using namespace std;
 
@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
 			if(users->login(userIdInput)){
 				string internalInputCommand;
 				while(internalInputCommand != "LOGOUT"){
-					cout << "Please enter a command: [FRIEND, MYFRIENDS, MYFEED, POST, READ, or LOGOUT]" << endl;
+					cout << "Please enter a command: [FRIEND, MYFRIENDS, MYFEED, READ, MYWALL, POST, or LOGOUT]" << endl;
 					cin >> internalInputCommand;
 					if(internalInputCommand == "POST"){
 						string postbuf;
@@ -38,6 +38,9 @@ int main(int argc, char const *argv[])
 						users->activeUser->addPost(postbuf);
 					}
 					else if(internalInputCommand == "READ"){
+						users->activeUser->readFeed();
+					}
+					else if(internalInputCommand == "MYWALL"){
 						users->activeUser->printPosts();
 					}
 					else if(internalInputCommand == "FRIEND"){

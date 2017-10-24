@@ -41,6 +41,7 @@ public:
 	void printPosts();
 	FBLPostLL * getFeed();
 	void printFeed();
+	void readFeed();
 
 	//Destruction
 	~FBLUser();
@@ -53,6 +54,7 @@ private:
 
 	FBLPostLL * myPosts;
 	FBLPostLL * myFeed;
+	FBLPostLL * myWall;
 	vector<FBLUser*> friendsList;
 };
 

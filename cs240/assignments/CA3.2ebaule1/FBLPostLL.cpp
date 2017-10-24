@@ -4,7 +4,7 @@
 #include <string>
 
 //Header Imports
-#include "../ncl/FBLPostLL.h"
+#include "FBLPostLL.h"
 
 using namespace std;
 
@@ -15,10 +15,6 @@ FBLPostLL::FBLPostLL(){
 FBLPostLL::FBLPostLLNode::FBLPostLLNode(){
 	data = nullptr;
 	next = nullptr;
-}
-
-FBLPostLL::FBLPostLLNode::~FBLPostLLNode(){
-	//????
 }
 
 void FBLPostLL::insert(FBLPost * newPost){

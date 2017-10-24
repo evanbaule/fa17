@@ -8,6 +8,9 @@ pw
 FRIEND cforno12
 FRIEND egbaule
 FRIEND mlewis
+POST hey friends
+POST I hate cris
+POST can why do dishes?
 MYFRIENDS
 LOGOUT
 LOGIN
@@ -39,6 +42,7 @@ LOGOUT
 LOGIN
 ebaule1
 pw
+MYWALL
 MYFRIENDS
 POST emb 1
 MYFEED
