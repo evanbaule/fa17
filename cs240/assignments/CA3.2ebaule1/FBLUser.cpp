@@ -75,7 +75,6 @@ void FBLUser::addPost(string content){
 		friendsList.at(i)->getFeed()->insert(newPost);
 		//cout << "Added post " << newPost->getContent() << " to list of " << friendsList.at(i)->getUserID() << endl;
 	}
-	delete newPost;
 }
 
 FBLPostLL * FBLUser::getFeed(){

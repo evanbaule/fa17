@@ -43,7 +43,6 @@ bool FBLUserLL::searchUserID(string targetUserID){
 		curr = curr->next;
 	}
 	return false;
-	delete curr;
 }
 
 bool FBLUserLL::login(string userID){

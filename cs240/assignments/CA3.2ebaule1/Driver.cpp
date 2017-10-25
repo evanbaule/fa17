@@ -103,7 +103,6 @@ int main(int argc, char const *argv[])
 			cin.ignore(10000, '\n');
 		}
 	}
-
-	delete users;
+	
 	cout << "Exiting..." << endl;
 }
