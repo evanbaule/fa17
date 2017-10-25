@@ -43,9 +43,6 @@ public:
 	void printFeed();
 	void readFeed();
 
-	//Destruction
-	~FBLUser();
-
 private:
 	string userID;
 	string password;
