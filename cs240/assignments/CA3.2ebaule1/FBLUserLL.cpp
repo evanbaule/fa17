@@ -32,6 +32,7 @@ void FBLUserLL::insert(FBLUser * newUser){
 		}
 		insertionPoint->next = newNode;
 	}
+	delete insertionPoint;
 }
 
 bool FBLUserLL::searchUserID(string targetUserID){

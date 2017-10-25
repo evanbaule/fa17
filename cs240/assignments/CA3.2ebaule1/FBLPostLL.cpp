@@ -29,6 +29,7 @@ void FBLPostLL::insert(FBLPost * newPost){
 		}
 		insertionPoint->next = newNode;
 	}
+	delete insertionPoint;
 }
 
 void FBLPostLL::printLLWithDelete(){

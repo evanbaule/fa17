@@ -23,8 +23,6 @@ public:
 	};
 
 	FBLPostLL();
-	~FBLPostLL();
-	
 	void insert(FBLPost * newPost);
 	void printLLWithDelete();
 	void printLLFirstWithDelete();
