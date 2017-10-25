@@ -5,7 +5,7 @@ all:	link_all
 
 #Links *.o into driver executable
 link_all: comp_all Driver.o Driver.o FBLUser.o FBLUserLL.o FBLPost.o FBLPostLL.o
-	g++  Driver.o FBLUser.o FBLUserLL.o FBLPost.o FBLPostLL.o -o CA3
+	g++  Driver.o FBLUser.o FBLUserLL.o FBLPost.o FBLPostLL.o -o Driver
 	
 
 #Compiles src files into object in build/*.o
@@ -18,16 +18,15 @@ comp_all: Driver.cpp FBLUser.cpp FBLPost.cpp FBLPostLL.cpp FBLUserLL.cpp
 	
 #Removes object files build/*.o and executable bin/drive(.exe), build afterwards to replace those files
 clean:
-	rm -f *.o CA3
+	rm -f *.o Driver
 
 #Runs the bin/drive(.exe) executable
 run:
-	./CA3
+	./Driver
 
 #Cat | input files to check cases
 test:
-	cat test.txt | ./CA3
+	cat test.txt | ./Driver
 
 test2:
-	cat test2.txt | ./CA3
-
+	cat test2.txt | ./Driver
