@@ -29,9 +29,6 @@ public:
 
 	void printContent();
 
-	//Destruction
-	~FBLPost();
-
 private:
 	string poster;
 	string content;
