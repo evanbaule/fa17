@@ -1,9 +1,0 @@
-CA 3.1 TODO: Not in order
-	- Change search to return user if it finds one with the ID
-	- Fix allocation of reserved space for friendsList vector
-		- currently seg faulting
-	- Make new member PostLL for a feed, seperate from post list containing posts from friends
-	- Once friendsList is working, make addPost loop through friendsList vector and call addPost on each element
-	- Have addPost post poster's postList and then their feed
-	- Tweak UI menus to reflect new functionality
-	- Add defriend option for gigs
