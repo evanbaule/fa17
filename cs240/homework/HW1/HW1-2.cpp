@@ -1,4 +1,4 @@
-/* 
+/*
 Evan M. Baule 
 HW1 - Question 1
 */
@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	int nMultiples;
-	cout << "Enter desired # of multiples: (PRINTS IN ORDER) ";
+	cout << "Enter desired # of multiples: (PRINTS REVERSE ORDER) ";
 	cin >> nMultiples;
 
 	cout << "------ PRINTING --------" << endl;
@@ -27,8 +27,7 @@ void multiplesOf3(int n){
 		cout << 3 << endl;
 		return;
 	}
-
-	multiplesOf3(n-1);
 	cout << 3*n << endl;
+	multiplesOf3(n-1);
 	
 }
