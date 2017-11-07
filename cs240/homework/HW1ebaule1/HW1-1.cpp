@@ -1,6 +1,6 @@
-/*
+/* 
 Evan M. Baule 
-HW1 - Question 1
+HW1-1
 */
 
 #include <stdlib.h>
@@ -13,7 +13,7 @@ using namespace std;
 int main(int argc, char const *argv[])
 {
 	int nMultiples;
-	cout << "Enter desired # of multiples: (PRINTS REVERSE ORDER) ";
+	cout << "Enter desired # of multiples: (PRINTS IN ORDER) ";
 	cin >> nMultiples;
 
 	cout << "------ PRINTING --------" << endl;
@@ -27,7 +27,8 @@ void multiplesOf3(int n){
 		cout << 3 << endl;
 		return;
 	}
-	cout << 3*n << endl;
+
 	multiplesOf3(n-1);
+	cout << 3*n << endl;
 	
 }

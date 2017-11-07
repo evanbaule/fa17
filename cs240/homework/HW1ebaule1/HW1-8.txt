@@ -1,0 +1,18 @@
+Evan Baule
+HW1-8
+
+(a)
+frequency: t(n) = n*n*n = n^3 
+runtime: O(n^3)
+
+(b)
+frequency: t(n) = n * log(n) * n = n^2log(n)
+runtime: O(n^2 * log(n))
+
+(c)
+frequency: t(n) = log(n) * 101 * log(n) = 101(log(n))^2
+runtime: O([log(n)]^2)
+
+(d)
+frequency: t(n) = 101 * log(n) * log(n) = 101(log(n))^2
+runtime: O([log(n)]^2)
