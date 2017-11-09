@@ -70,6 +70,14 @@ void FBLPostLL::printLLFirstWithDelete(){
 	}
 }
 
+void FBLPostLL::printLLFirstNoDelete(){
+	if(first){
+		first->data->printContent();
+	} else {
+		cout << "No posts to read from... " << endl;
+	}
+}
+
 
 void FBLPostLL::printLLNoDelete(){
 	if(first){
@@ -99,11 +107,20 @@ void FBLPostLL::removeReadPost(){
 	}
 }
 
-FBLPost* FBLPostLL::returnRecentPost(){
+bool FBLPostLL::hasPosts(){
+	if(first){
+		return true;
+	} else {
+		return false;
+	}
+}
+
+FBLPost * FBLPostLL::returnRecentPost(){
 	if(first){
 		return first->data;
 	} else {
 		cout << "No posts to read from... " << endl;
+		return nullptr;
 	}
 }
 

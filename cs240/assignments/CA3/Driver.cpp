@@ -45,22 +45,33 @@ int main(int argc, char const *argv[])
 						FBLPost * activePost = users->activeUser->getRecentPost();
 						string commentCommand = "";
 						while(commentCommand != "DONE"){
-							cout << "Enter a command: [LIKE, COMMENT, READ-AZ, READ-ZA, or DONE]" << endl;
-							cin >> commentCommand;
-							if(commentCommand == "LIKE"){
-								activePost->like();
-							} else if(commentCommand == "COMMENT"){
-								string commentBuffer;
-								cin >> commentBuffer;
-								//activePost->addComment(commentBuffer);
-								cout << "Added a comment. " << endl;
-							} else if(commentCommand == "SORT-AZ"){
-								//activePost->readAZ();
-							} else if(commentCommand == "SORT-ZA"){
-								//activePost->readZA();
+							users->activeUser->readFeed();
+							if(users->activeUser->getFeed()->hasPosts()){
+								cout << "Enter a command: [LIKE, COMMENT, READ-AZ, READ-ZA, or DONE]" << endl;
+								cin >> commentCommand;
+								if(commentCommand == "LIKE"){
+									cout << activePost->getContent() << endl;
+									activePost->like();
+								} else if(commentCommand == "COMMENT"){
+									string commentBuffer;
+									getline(cin, commentBuffer);
+									activePost->addComment(commentBuffer);
+									cout << "Added a comment. " << endl;
+								} else if(commentCommand == "SORT-AZ"){
+									//activePost->readAZ();
+								} else if(commentCommand == "ALL"){
+									activePost->printComments();
+								} else if(commentCommand == "LLA"){
+									activePost->printCommentsZA();
+								} else if(commentCommand == "SORT-ZA"){
+									//activePost->readZA();
+								}
+							} else {
+								break;
 							}
 						}
-						users->activeUser->readFeed();
+						users->activeUser->removeRead();
+						
 					}
 					else if(internalInputCommand == "MYWALL"){
 						users->activeUser->printPosts();

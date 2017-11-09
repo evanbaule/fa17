@@ -5,10 +5,9 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
-#include "FBLUser.h"
 
 using namespace std;
-class FBLCommenLL
+class FBLCommentLL
 {
 public:
 	//Node class
@@ -16,16 +15,22 @@ public:
 	{
 	public:
 		FBLCommentLLNode();
+		void printNodeData();
 		string data;
+		FBLCommentLLNode * prev;
 		FBLCommentLLNode * next;
 	};
 
-	void sortaz();
-	void sortza();
-
+	FBLCommentLL();
+	void printAllUL();
+	void printAllBackwards();
+	void insertComment(string body);
+	void readaz();
+	void readza();
 
 private:
 	FBLCommentLLNode * first;
+	FBLCommentLLNode * last;
 };
 
 #endif

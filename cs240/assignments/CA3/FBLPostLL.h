@@ -26,8 +26,10 @@ public:
 	void insert(FBLPost * newPost);
 	void printLLWithDelete();
 	void printLLFirstWithDelete();
+	void printLLFirstNoDelete();
 	void printLLNoDelete();
 	void removeReadPost();
+	bool hasPosts();
 	FBLPost * returnRecentPost();
 	
 private:

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string>
+#include "FBLCommentLL.h"
 
 using namespace std;
 
@@ -23,16 +24,20 @@ public:
 	//Content
 	string getContent();
 	void setContent(string content);
+	void printComments();
+	void printCommentsZA();
+	void addComment(string s);
 
 	string getPoster();
 	void setPoster(string poster);	
-
 	void printContent();
 
 private:
 	string poster;
 	string content;
 	int numLikes;
+	FBLCommentLL * comments;
+
 };
 
 #endif

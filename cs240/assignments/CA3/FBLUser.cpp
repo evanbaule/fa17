@@ -84,9 +84,13 @@ void FBLUser::printFeed(){
 }
 
 void FBLUser::readFeed(){
-	cout << "NEWEST POST:" << endl << "-------------------------------------------------------" << endl;
-	myFeed->printLLFirstWithDelete();
+	cout << "TOP ACTIVE POST:" << endl << "-------------------------------------------------------" << endl;
+	myFeed->printLLFirstNoDelete();
 	cout << "-------------------------------------------------------" << endl;
+}
+
+void FBLUser::removeRead(){
+	myFeed->removeReadPost();
 }
 
 void FBLUser::printPosts(){
@@ -110,7 +114,7 @@ void FBLUser::addFriend(FBLUser * newFriend){
 }
 
 FBLPost* FBLUser::getRecentPost(){
-	myFeed->returnRecentPost();
+	return myFeed->returnRecentPost();
 }
 
 void FBLUser::printFriendsList(){

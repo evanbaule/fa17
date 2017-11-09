@@ -42,6 +42,7 @@ public:
 	FBLPostLL * getFeed();
 	void printFeed();
 	void readFeed();
+	void removeRead();
 	FBLPost * getRecentPost();
 
 private:
