@@ -50,21 +50,16 @@ int main(int argc, char const *argv[])
 								cout << "Enter a command: [LIKE, COMMENT, READ-AZ, READ-ZA, or DONE]" << endl;
 								cin >> commentCommand;
 								if(commentCommand == "LIKE"){
-									cout << activePost->getContent() << endl;
 									activePost->like();
 								} else if(commentCommand == "COMMENT"){
 									string commentBuffer;
 									getline(cin, commentBuffer);
 									activePost->addComment(commentBuffer);
 									cout << "Added a comment. " << endl;
-								} else if(commentCommand == "SORT-AZ"){
-									//activePost->readAZ();
-								} else if(commentCommand == "ALL"){
+								} else if(commentCommand == "READ-AZ"){
 									activePost->printComments();
-								} else if(commentCommand == "LLA"){
+								} else if(commentCommand == "READ-ZA"){
 									activePost->printCommentsZA();
-								} else if(commentCommand == "SORT-ZA"){
-									//activePost->readZA();
 								}
 							} else {
 								break;
