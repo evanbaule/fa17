@@ -1,25 +1,16 @@
-#ifndef DISH_G
-#define DISH_G
+#ifndef DISH_H
+#define DISH_H
 //Reference
 #include <stdio.h>
 #include <iostream>
 #include <string.h>
 #include <vector>
+#include <cctype>
+#include "Heap.h"
+#include "Wrapper.h"
 
 class Dish{
-//Private members
-	std::vector<std::string> contents;	
 public:
-	class Wrapper{
-	public:
-		Wrapper();
-		Wrapper(std::string content);
-		std::string content;
-		int vectorIndex;
-		int lengthHeapIndex;
-		int alphaHeapIndex;
-		void printWrapperData();
-	};
 	Dish();
 	~Dish();
 	//Specification-required functions
@@ -33,6 +24,11 @@ public:
 
 	//Helpers [Not in specification]
 	void printContents();
+	int availableIndex;
+
+	Heap * alphaHeap;
+	Heap * lengthHeap;
+	Wrapper contents[1024];
 };
 
 #endif

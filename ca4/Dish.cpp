@@ -1,77 +1,93 @@
 //References
 #include "Dish.h"
-#include <iterator>
+#include "Wrapper.h"
 using namespace std;
-
-//Wrapper
-Dish::Wrapper::Wrapper(){
-	content = "";
-	vectorIndex = 64;
-	lengthHeapIndex = 64;
-	alphaHeapIndex = 64;
-}
-
-Dish::Wrapper::Wrapper(string content){
-	this->content = content;
-	vectorIndex = 0;
-	lengthHeapIndex = 0;
-	alphaHeapIndex = 0;
-}
-
-void Dish::Wrapper::printWrapperData(){
-	cout << "---- Printing Wrapper Contents ----" << endl;
-	cout << "|\t Content: " << content << endl;
-	cout << "|\t VDX: " << vectorIndex << endl;
-	cout << "|\t LHDX: " << lengthHeapIndex << endl;
-	cout << "|\t AHDX: " << alphaHeapIndex << endl;
-	cout << "---- END ----" << endl;
-}
 
 //Management
 Dish::Dish(){
-
-	cout << "g++ is dumb" << endl;
+	lengthHeap = new Heap(contents);
+	alphaHeap = new Heap(contents);
+	availableIndex = 0;
 }
 
 Dish::~Dish(){
-	//delete all integers in the tree
-	//delete 
+	//Deletes both heaps
 }
 
 //Specification-required functions
 int Dish::Dish::insert(string s){
-	contents.push_back(s);
+	int retVal;
+	if(availableIndex > 1023) return -1;
+	else {
+		retVal = availableIndex;
+		Wrapper tbi = Wrapper(s);
+		contents[availableIndex] = tbi;
+		contents[availableIndex].vectorIndex = availableIndex;
+		contents[availableIndex].lengthHeapIndex = lengthHeap->insertLength(contents[availableIndex].vectorIndex);
+		contents[availableIndex].alphaHeapIndex = alphaHeap->insertAlpha(contents[availableIndex].vectorIndex);
+		availableIndex++;
+	}
+	return retVal;
 }
 
+//Finds string s in contents, returns the index where it was found or -1 if not found
+//O(n)
 int Dish::find(string s){
-//	iterator idx = contents.begin();
-//	int ret = -1;
-//	if(idx == contents.end()) return ret; //Didn't find s in contents
-//	else {
-//		ret = distance(contents.begin(), idx);
-//	}
-//	return ret;
-	return 128;
+	for(int i = 0; i < 1024; i++){
+		if(contents[i].content == s){
+			return i;
+		}
+	} 
+	return -1;
 }
 
+//O(log(n))
 bool Dish::capitalize(int k){
-	return false;
+	if(k > availableIndex) return false;
+	contents[k].content[0] = toupper(contents[k].content[0]);
+	//Rearrange heaps to reflect update
+	contents[k].lengthHeapIndex = lengthHeap->minHeapify(contents[k].lengthHeapIndex);
+	contents[k].alphaHeapIndex = alphaHeap->minHeapify(contents[k].alphaHeapIndex);	
+	return true;
 }
 
+//O(log(n))
 bool Dish::allcaps(int k){
+	if(k > availableIndex) return false;
+	for(int i = 0; i < contents[k].content.length(); i++){
+		contents[k].content[i] = toupper(contents[k].content[i]);
+	}
+	//Rearrange heaps to reflect update
+	contents[k].lengthHeapIndex = lengthHeap->minHeapify(contents[k].lengthHeapIndex);
+	contents[k].alphaHeapIndex = alphaHeap->minHeapify(contents[k].alphaHeapIndex);
 	return false;
 }
 
+//O(log(n))
 bool Dish::truncate(int k, int i){
-	return false;
+	if(k > availableIndex) return false;
+	contents[k].content = contents[k].content.substr(0, i);
+	//Rearrange heaps to reflect update
+	contents[k].lengthHeapIndex = lengthHeap->minHeapify(contents[k].lengthHeapIndex);
+	contents[k].alphaHeapIndex = alphaHeap->minHeapify(contents[k].alphaHeapIndex);
+	return true;
 }
 
+//O(1)
 string Dish::getshortest(){
-	return "";
+	return contents[lengthHeap->data[0]].content;
 }
 
+//O(1)
 string Dish::getfirst(){
-	return "";
+	return contents[alphaHeap->data[0]].content;
 }
 
 //Helper functionality
+void Dish::printContents(){
+	for(int i = 0; i < 1024; i++){
+		if(contents[i].content.length() > 0){
+			contents[i].printWrapperData();
+		}
+	}
+}
